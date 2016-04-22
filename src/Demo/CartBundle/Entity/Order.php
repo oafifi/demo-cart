@@ -1,15 +1,12 @@
 <?php
 
-
-namespace Demo\CartBundle\Model;
+namespace Demo\CartBundle\Entity;
 
 /**
- * Class NormalItem
- * @package Demo\CartBundle\Model
- *
- * Implementation for the basic shopping item,and also provides data access methods.
+ * Class Order
+ * @package Demo\CartBundle\Entity
  */
-class NormalItem extends AbstractShoppingItem implements EntityDataAccessInterface
+class Order extends AbstractOrder implements EntityDataAccessInterface
 {
     public function save()
     {

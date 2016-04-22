@@ -1,10 +1,10 @@
 <?php
 
-namespace Demo\CartBundle\Model;
+namespace Demo\CartBundle\Entity;
 
 /**
  * Class OrderCart
- * @package Demo\CartBundle\Model
+ * @package Demo\CartBundle\Entity
  *
  * Orders cart that holds order items, and create order from its contents (checkout).
  * Provides data access methods.

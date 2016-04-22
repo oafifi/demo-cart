@@ -1,10 +1,10 @@
 <?php
 
-namespace Demo\CartBundle\Model;
+namespace Demo\CartBundle\Entity;
 
 /**
  * Interface EntityDataAccessInterface
- * @package Demo\CartBundle\Model
+ * @package Demo\CartBundle\Entity
  *
  * Defines basic data access methods for entities
  */

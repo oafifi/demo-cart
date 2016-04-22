@@ -1,15 +1,20 @@
 <?php
 
-namespace Demo\CartBundle\Model;
+namespace Demo\CartBundle\Entity;
 
 /**
- * Class OrderItem
- * @package Demo\CartBundle\Model
+ * Class WishList
+ * @package Demo\CartBundle\Entity
  *
- * The item to be ordered
+ * Wish list that holds order items.
+ * Provides data access methods.
  */
-class OrderItem extends AbstractOrderItem implements EntityDataAccessInterface
+class WishList extends AbstractCart implements EntityDataAccessInterface
 {
+    protected $description;
+
+    protected $publicList;
+
     public function save()
     {
         // TODO: Implement save() method.
@@ -34,5 +39,6 @@ class OrderItem extends AbstractOrderItem implements EntityDataAccessInterface
     {
         // TODO: Implement findAll() method.
     }
+
 
 }

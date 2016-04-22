@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Demo\CartBundle\Model;
+namespace Demo\CartBundle\Entity;
 
 /**
  * Class AbstractShoppingItem
- * @package Demo\CartBundle\Model
+ * @package Demo\CartBundle\Entity
  *
  * Base class for Shopping items
  */

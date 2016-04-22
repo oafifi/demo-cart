@@ -1,12 +1,14 @@
 <?php
 
-namespace Demo\CartBundle\Model;
+namespace Demo\CartBundle\Entity;
 
 /**
- * Class Order
- * @package Demo\CartBundle\Model
+ * Class OrderItem
+ * @package Demo\CartBundle\Entity
+ *
+ * The item to be ordered
  */
-class Order extends AbstractOrder implements EntityDataAccessInterface
+class OrderItem extends AbstractOrderItem implements EntityDataAccessInterface
 {
     public function save()
     {
