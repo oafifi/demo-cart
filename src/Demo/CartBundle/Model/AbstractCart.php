@@ -6,12 +6,12 @@ namespace Demo\CartBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class AbstractOrderItemList
+ * Class AbstractCart
  * @package Demo\CartBundle\Model
  *
  * Base class for order items container
  */
-abstract class AbstractOrderItemList
+abstract class AbstractCart
 {
     protected $id;
 

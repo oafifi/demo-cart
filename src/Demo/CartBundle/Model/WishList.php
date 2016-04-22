@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Omar
- * Date: 4/22/2016
- * Time: 6:45 PM
- */
 
 namespace Demo\CartBundle\Model;
 
@@ -15,9 +9,36 @@ namespace Demo\CartBundle\Model;
  * Wish list that holds order items.
  * Provides data access methods.
  */
-class WishList extends AbstractOrderItemList implements EntityDataAccessInterface
+class WishList extends AbstractCart implements EntityDataAccessInterface
 {
     protected $description;
 
     protected $publicList;
+
+    public function save()
+    {
+        // TODO: Implement save() method.
+    }
+
+    public function remove()
+    {
+        // TODO: Implement remove() method.
+    }
+
+    public function update()
+    {
+        // TODO: Implement update() method.
+    }
+
+    public static function find($id)
+    {
+        // TODO: Implement find() method.
+    }
+
+    public static function findAll()
+    {
+        // TODO: Implement findAll() method.
+    }
+
+
 }

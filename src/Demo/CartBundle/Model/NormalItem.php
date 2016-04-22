@@ -11,4 +11,29 @@ namespace Demo\CartBundle\Model;
  */
 class NormalItem extends AbstractShoppingItem implements EntityDataAccessInterface
 {
+    public function save()
+    {
+        // TODO: Implement save() method.
+    }
+
+    public function remove()
+    {
+        // TODO: Implement remove() method.
+    }
+
+    public function update()
+    {
+        // TODO: Implement update() method.
+    }
+
+    public static function find($id)
+    {
+        // TODO: Implement find() method.
+    }
+
+    public static function findAll()
+    {
+        // TODO: Implement findAll() method.
+    }
+
 }

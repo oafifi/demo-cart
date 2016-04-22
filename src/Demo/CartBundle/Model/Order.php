@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Omar
- * Date: 4/22/2016
- * Time: 8:22 PM
- */
 
 namespace Demo\CartBundle\Model;
 
@@ -14,5 +8,29 @@ namespace Demo\CartBundle\Model;
  */
 class Order extends AbstractOrder implements EntityDataAccessInterface
 {
+    public function save()
+    {
+        // TODO: Implement save() method.
+    }
+
+    public function remove()
+    {
+        // TODO: Implement remove() method.
+    }
+
+    public function update()
+    {
+        // TODO: Implement update() method.
+    }
+
+    public static function find($id)
+    {
+        // TODO: Implement find() method.
+    }
+
+    public static function findAll()
+    {
+        // TODO: Implement findAll() method.
+    }
 
 }
