@@ -1,3 +1,9 @@
 demo_cart_homepage:
     path:     /
     defaults: { _controller: DemoCartBundle:Default:index }
+
+demo_cart_product_create:
+    path:     /product/create/{type}
+    defaults: { _controller: DemoCartBundle:Product:create, type: shopping-item }
+    requirements:
+        type: shopping-item|sale-item
