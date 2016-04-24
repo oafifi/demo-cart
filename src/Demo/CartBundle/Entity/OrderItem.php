@@ -15,38 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"normal" = "OrderItem", "wish" = "WishOrderItem"})
  */
-class OrderItem extends AbstractOrderItem implements EntityDataAccessInterface
+class OrderItem extends AbstractOrderItem
 {
-    /**
-     * @inheritDoc
-     */
-    public function save()
-    {
-        // TODO: Implement save() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function remove()
-    {
-        // TODO: Implement remove() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function update()
-    {
-        // TODO: Implement update() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public static function find($id)
-    {
-        // TODO: Implement find() method.
-    }
 
 }

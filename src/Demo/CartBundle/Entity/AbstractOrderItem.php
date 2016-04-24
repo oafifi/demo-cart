@@ -41,7 +41,7 @@ abstract class AbstractOrderItem
     }
 
     /**
-     * @return mixed
+     * @return AbstractShoppingItem
      */
     public function getItem()
     {
@@ -51,7 +51,7 @@ abstract class AbstractOrderItem
     /**
      * @param mixed $item
      */
-    public function setItem($item)
+    public function setItem(AbstractShoppingItem $item)
     {
         $this->item = $item;
     }
@@ -72,5 +72,14 @@ abstract class AbstractOrderItem
         $this->quantity = $quantity;
     }
 
+    /**
+     * returns the total value of the order item
+     *
+     * @return mixed
+     */
+    public function getTotal()
+    {
+        return $this->getQuantity()*$this->getItem()->getNetPrice();
+    }
 
 }
