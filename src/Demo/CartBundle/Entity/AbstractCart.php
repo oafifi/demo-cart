@@ -24,6 +24,8 @@ abstract class AbstractCart
     protected $id;
 
     /**
+     * name of the cart
+     *
      * @ORM\Column(type="string", length=255)
      */
     protected $name;
@@ -69,19 +71,54 @@ abstract class AbstractCart
     }
 
     /**
-     * @return mixed
+     * Get an array copy of the cart items to prevent direct manipulation of the original list
+     *
+     * @return array
      */
     public function getItemList()
     {
-        return $this->itemList;
+        return $this->itemList->getValues();
     }
 
     /**
-     * @param mixed $itemList
+     * Add item to the list
+     *
+     * @param \Demo\CartBundle\Entity\OrderItem $itemList
+     * @return OrderCart
      */
-    public function setItemList($itemList)
+    public function addItemList(\Demo\CartBundle\Entity\OrderItem $itemList)
     {
-        $this->itemList = $itemList;
+        $this->itemList[] = $itemList;
+
+        return $this;
+    }
+
+    /**
+     * Remove item from from the list
+     *
+     * @param \Demo\CartBundle\Entity\OrderItem $itemList
+     */
+    public function removeItemList(\Demo\CartBundle\Entity\OrderItem $itemList)
+    {
+        $this->itemList->removeElement($itemList);
+    }
+
+    /**
+     * Remove all items in the cart
+     */
+    public function emptyCart()
+    {
+        $this->itemList->clear();
+    }
+
+    /**
+     * get number of items in the cart
+     *
+     * @return int
+     */
+    public function getCount()
+    {
+        return $this->itemList->count();
     }
 
 }

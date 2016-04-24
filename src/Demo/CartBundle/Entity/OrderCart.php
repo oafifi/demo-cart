@@ -13,78 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  */
-class OrderCart extends AbstractCart implements EntityDataAccessInterface, CheckoutInterface
+class OrderCart extends AbstractCart implements OrderCartInterface
 {
     /**
      * @inheritDoc
      */
-    public function checkout()
+    public function getSubtotal()
     {
-        // TODO: Implement checkout() method.
+        // TODO: Implement getSubtotal() method.
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function getTotalCost()
-    {
-        // TODO: Implement getTotalCost() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function save()
-    {
-        // TODO: Implement save() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function remove()
-    {
-        // TODO: Implement remove() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function update()
-    {
-        // TODO: Implement update() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public static function find($id)
-    {
-        // TODO: Implement find() method.
-    }
-
-
-
-    /**
-     * Add itemList
-     *
-     * @param \Demo\CartBundle\Entity\OrderItem $itemList
-     * @return OrderCart
-     */
-    public function addItemList(\Demo\CartBundle\Entity\OrderItem $itemList)
-    {
-        $this->itemList[] = $itemList;
-
-        return $this;
-    }
-
-    /**
-     * Remove itemList
-     *
-     * @param \Demo\CartBundle\Entity\OrderItem $itemList
-     */
-    public function removeItemList(\Demo\CartBundle\Entity\OrderItem $itemList)
-    {
-        $this->itemList->removeElement($itemList);
-    }
 }

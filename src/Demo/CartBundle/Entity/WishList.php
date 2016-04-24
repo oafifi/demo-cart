@@ -32,7 +32,7 @@ class WishList extends AbstractCart implements EntityDataAccessInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $publicList;
+    protected $public;
 
     /**
      * @inheritDoc
@@ -93,12 +93,12 @@ class WishList extends AbstractCart implements EntityDataAccessInterface
     /**
      * Set publicList
      *
-     * @param boolean $publicList
+     * @param boolean $public
      * @return WishList
      */
-    public function setPublicList($publicList)
+    public function setPublic($public)
     {
-        $this->publicList = $publicList;
+        $this->public = $public;
 
         return $this;
     }
@@ -108,9 +108,9 @@ class WishList extends AbstractCart implements EntityDataAccessInterface
      *
      * @return boolean 
      */
-    public function getPublicList()
+    public function getPublic()
     {
-        return $this->publicList;
+        return $this->public;
     }
 
     /**
