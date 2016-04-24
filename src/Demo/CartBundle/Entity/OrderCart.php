@@ -16,11 +16,17 @@ use Doctrine\ORM\Mapping as ORM;
 class OrderCart extends AbstractCart implements OrderCartInterface
 {
     /**
+     * 
      * @inheritDoc
      */
     public function getSubtotal()
     {
-        // TODO: Implement getSubtotal() method.
+        $subtotal = 0;
+        foreach($this->itemList as $orderItem){
+            $subtotal += $orderItem->getTotal();
+        }
+
+        return $subtotal;
     }
 
 }
