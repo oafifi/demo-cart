@@ -15,14 +15,16 @@ use Doctrine\ORM\Mapping as ORM;
 class SaleItem extends ShoppingItem
 {
     /**
-     * @ORM\Column(type="integer")
+     * discount in percentage
+     *
+     * @ORM\Column(type="decimal", scale=2)
      */
     protected $discount;
 
 
 
     /**
-     * Set discount
+     * Set discount in percentage
      *
      * @param integer $discount
      * @return SaleItem
@@ -35,12 +37,34 @@ class SaleItem extends ShoppingItem
     }
 
     /**
-     * Get discount
+     * Get discount in percentage
      *
-     * @return integer 
+     * @return mixed
      */
     public function getDiscount()
     {
         return $this->discount;
     }
+
+    /**
+     * Get discount value
+     *
+     * @return mixed
+     */
+    public function getDiscountValue()
+    {
+        return $this->getPrice()*$this->getDiscount()/100;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getNetPrice()
+    {
+        $price = parent::getNetPrice();
+        return $price-$this->getDiscountValue();
+
+    }
+
+
 }

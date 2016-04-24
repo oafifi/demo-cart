@@ -83,6 +83,8 @@ abstract class AbstractShoppingItem
     }
 
     /**
+     * returns the actual price of the item
+     *
      * @return mixed
      */
     public function getPrice()
@@ -114,5 +116,13 @@ abstract class AbstractShoppingItem
         $this->inStock = $inStock;
     }
 
-
+    /**
+     * returns the net price of an item after discount(if exists) or other item price manipulation
+     *
+     * @return mixed
+     */
+    public function getNetPrice()
+    {
+        return $this->getPrice();
+    }
 }
