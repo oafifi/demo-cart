@@ -10,3 +10,7 @@ services:
     demo_cart.shopping_item_manager:
             class: Demo\CartBundle\Entity\ShoppingItemManager
             arguments: ["@doctrine.orm.entity_manager"]
+
+    demo_cart.order_item_manager:
+                class: Demo\CartBundle\Entity\OrderItemManager
+                arguments: ["@doctrine.orm.entity_manager"]
