@@ -28,8 +28,9 @@ interface CartManagerInterface
     public function create();
 
     /**
-     * Delete cart
+     * Delete cart by id
      *
+     * @param $cart
      * @return mixed
      */
     public function delete($cart);
