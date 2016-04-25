@@ -6,3 +6,7 @@ services:
     demo_cart.cart_manager:
         class: Demo\CartBundle\Entity\CartManager
         arguments: ["@doctrine.orm.entity_manager"]
+
+    demo_cart.shopping_item_manager:
+            class: Demo\CartBundle\Entity\ShoppingItemManager
+            arguments: ["@doctrine.orm.entity_manager"]
