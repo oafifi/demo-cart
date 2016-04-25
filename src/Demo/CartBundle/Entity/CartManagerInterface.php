@@ -43,6 +43,14 @@ interface CartManagerInterface
     public function update($cart);
 
     /**
+     * find cart by id
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id);
+
+    /**
      * Add shopping item to the cart
      *
      * @param $item
@@ -78,8 +86,7 @@ interface CartManagerInterface
     /**
      * Empty the cart, remove all elements
      *
-     * @param $item
      * @return mixed
      */
-    public function emptyCart($item);
+    public function emptyCart();
 }

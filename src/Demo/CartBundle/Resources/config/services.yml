@@ -2,3 +2,7 @@ services:
 #    demo_cart.example:
 #        class: Demo\CartBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+    demo_cart.cart_manager:
+        class: Demo\CartBundle\Entity\CartManager
+        arguments: ["@doctrine.orm.entity_manager"]
