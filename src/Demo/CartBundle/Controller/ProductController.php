@@ -14,6 +14,7 @@ use Demo\CartBundle\Form\Type\ShoppingItemType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Demo\CartBundle\Entity\ShoppingItem;
 use Demo\CartBundle\Entity\SaleItem;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -34,10 +35,11 @@ class ProductController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //TODO: Persist item
+            $pm = $this->get("demo_cart.shopping_item_manager");
 
-            print_r($item);
-            return $this->render('DemoCartBundle:Default:index.html.twig');
+            $item = $pm->create($item);
+
+            return new Response('Done! -> product id: '.$item->getId());
         }
 
         return $this->render('DemoCartBundle:Product:create.html.twig', array('form' => $form->createView()));
