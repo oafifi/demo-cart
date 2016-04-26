@@ -6,7 +6,7 @@
  * Time: 5:12 PM
  */
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\OrderElement;
 
 
 class OrderItemManager extends AbstractOrderItemManager

@@ -6,7 +6,7 @@
  * Time: 5:07 PM
  */
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\OrderElement;
 
 
 use Doctrine\ORM\EntityManager;

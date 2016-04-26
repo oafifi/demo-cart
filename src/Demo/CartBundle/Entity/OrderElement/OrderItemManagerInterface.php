@@ -6,7 +6,7 @@
  * Time: 4:52 PM
  */
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\OrderElement;
 
 
 /**
