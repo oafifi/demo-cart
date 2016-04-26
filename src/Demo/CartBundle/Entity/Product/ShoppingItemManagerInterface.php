@@ -6,7 +6,7 @@
  * Time: 12:48 PM
  */
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\Product;
 
 
 /**
