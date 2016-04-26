@@ -9,6 +9,7 @@
 namespace Demo\CartBundle\Controller;
 
 use Demo\CartBundle\Form\Type\SaleItemType;
+use Demo\CartBundle\Util\FormsUtil;
 use Symfony\Component\HttpFoundation\Request;
 use Demo\CartBundle\Form\Type\ShoppingItemType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -39,9 +40,31 @@ class ProductController extends Controller
 
             $item = $pm->create($item);
 
-            return new Response('Done! -> product id: '.$item->getId());
+            return $this->redirectToRoute("demo_cart_product_view", array("id"=>$item->getId()));
         }
 
         return $this->render('DemoCartBundle:Product:create.html.twig', array('form' => $form->createView()));
+    }
+
+    public function listAllAction()
+    {
+        $pm = $this->get("demo_cart.shopping_item_manager");
+
+        $items = $pm->findAll();
+
+        //TODO: add "add to cart"
+
+        return $this->render('DemoCartBundle:Product:list.html.twig', array('items' => $items));
+    }
+
+    public function viewAction(Request $request,$id)
+    {
+        $pm = $this->get("demo_cart.shopping_item_manager");
+
+        $item = $pm->findById($id);
+
+        //TODO: add "add to cart"
+
+        return $this->render('DemoCartBundle:Product:view.html.twig', array('item' => $item));
     }
 }
