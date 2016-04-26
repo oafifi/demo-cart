@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\Cart;
 
 /**
  * Interface OrderCartInterface

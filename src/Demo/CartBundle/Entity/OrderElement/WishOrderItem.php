@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\OrderElement;
 
 use Doctrine\ORM\Mapping as ORM;
 

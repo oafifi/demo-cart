@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\Cart;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;

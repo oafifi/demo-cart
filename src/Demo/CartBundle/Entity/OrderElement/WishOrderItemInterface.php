@@ -6,8 +6,10 @@
  * Time: 4:03 PM
  */
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\OrderElement;
 
+
+use Demo\CartBundle\Entity\Cart\WishListInterface;
 
 interface WishOrderItemInterface extends OrderItemInterface
 {

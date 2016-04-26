@@ -1,7 +1,8 @@
 <?php
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\OrderElement;
 
+use Demo\CartBundle\Entity\AbstractShoppingItem;
 
 /**
  * Class OrderItemInterface
