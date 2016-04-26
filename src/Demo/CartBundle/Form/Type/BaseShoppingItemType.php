@@ -25,7 +25,9 @@ class BaseShoppingItemType extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('price', MoneyType::class)
-            ->add('inStock', CheckboxType::class)
+            ->add('inStock', CheckboxType::class, array(
+                "required"=>false
+            ))
             ->add('create', SubmitType::class)
         ;
     }
@@ -34,7 +36,10 @@ class BaseShoppingItemType extends AbstractType
     {
         $resolver->setDefaults(array(
             'inherit_data' => true,
-            'data_class' => 'Demo\CartBundle\Entity\ShoppingItem'
+            'data_class' => 'Demo\CartBundle\Entity\ShoppingItem',
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            'csrf_token_id'   => 'shopping_item',
         ));
     }
 }
