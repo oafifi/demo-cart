@@ -2,7 +2,7 @@
 
 namespace Demo\CartBundle\Entity\OrderElement;
 
-use Demo\CartBundle\Entity\ShoppingItemInterface;
+use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
 
 /**
  * Class OrderItemInterface

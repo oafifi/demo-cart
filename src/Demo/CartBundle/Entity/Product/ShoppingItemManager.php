@@ -18,6 +18,8 @@ namespace Demo\CartBundle\Entity\Product;
  */
 class ShoppingItemManager extends AbstractShoppingItemManager
 {
+    const REPO = 'DemoCartBundle:Product\ShoppingItem';
+
     /**
      * @inheritDoc
      */
@@ -55,7 +57,7 @@ class ShoppingItemManager extends AbstractShoppingItemManager
      */
     public function findById($id)
     {
-        return $this->em->getRepository('DemoCartBundle:ShoppingItem')->find($id);
+        return $this->em->getRepository(self::REPO)->find($id);
     }
 
     /**
@@ -63,6 +65,6 @@ class ShoppingItemManager extends AbstractShoppingItemManager
      */
     public function findAll()
     {
-        return $this->em->getRepository('DemoCartBundle:ShoppingItem')->findAll();
+        return $this->em->getRepository(self::REPO)->findAll();
     }
 }

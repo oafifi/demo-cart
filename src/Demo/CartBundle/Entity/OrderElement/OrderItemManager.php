@@ -11,7 +11,7 @@ namespace Demo\CartBundle\Entity\OrderElement;
 
 class OrderItemManager extends AbstractOrderItemManager
 {
-    const REPO = 'DemoCartBundle:OrderItem';    //repository used
+    const REPO = 'DemoCartBundle:OrderElement\OrderItem';    //repository used
 
     /**
      * @inheritDoc

@@ -36,7 +36,7 @@ class BaseShoppingItemType extends AbstractType
     {
         $resolver->setDefaults(array(
             'inherit_data' => true,
-            'data_class' => 'Demo\CartBundle\Entity\ShoppingItem',
+            'data_class' => 'Demo\CartBundle\Entity\Product\ShoppingItem',
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
             'csrf_token_id'   => 'shopping_item',

@@ -18,7 +18,7 @@ class SaleItemType extends AbstractType
     {
         $builder
             ->add('SaleItem', BaseShoppingItemType::class, array(
-                'data_class' => 'Demo\CartBundle\Entity\SaleItem'
+                'data_class' => 'Demo\CartBundle\Entity\Product\SaleItem'
             ))
             ->add('discount', PercentType::class, array(
                 'type' => 'integer'

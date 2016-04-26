@@ -5,17 +5,17 @@ services:
 
 #Entity managers
     demo_cart.cart_manager:
-        class: Demo\CartBundle\Entity\CartManager
+        class: Demo\CartBundle\Entity\Cart\CartManager
         arguments: ["@doctrine.orm.entity_manager"]
 
     demo_cart.wish_list_manager:
-            class: Demo\CartBundle\Entity\WishListManager
+            class: Demo\CartBundle\Entity\Cart\WishListManager
             arguments: ["@doctrine.orm.entity_manager"]
 
     demo_cart.shopping_item_manager:
-            class: Demo\CartBundle\Entity\ShoppingItemManager
+            class: Demo\CartBundle\Entity\Product\ShoppingItemManager
             arguments: ["@doctrine.orm.entity_manager"]
 
     demo_cart.order_item_manager:
-                class: Demo\CartBundle\Entity\OrderItemManager
+                class: Demo\CartBundle\Entity\OrderElement\OrderItemManager
                 arguments: ["@doctrine.orm.entity_manager"]
