@@ -2,7 +2,7 @@
 
 namespace Demo\CartBundle\Entity\OrderElement;
 
-use Demo\CartBundle\Entity\AbstractShoppingItem;
+use Demo\CartBundle\Entity\ShoppingItemInterface;
 
 /**
  * Class OrderItemInterface
@@ -19,14 +19,14 @@ interface OrderItemInterface
     public function getId();
 
     /**
-     * @return AbstractShoppingItem
+     * @return ShoppingItemInterface
      */
     public function getItem();
 
     /**
      * @param mixed $item
      */
-    public function setItem(AbstractShoppingItem $item);
+    public function setItem(ShoppingItemInterface $item);
 
     /**
      * @return mixed
