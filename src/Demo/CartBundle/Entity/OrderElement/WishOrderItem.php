@@ -25,7 +25,7 @@ class WishOrderItem extends OrderItem implements WishOrderItemInterface
     protected $important;
 
     /**
-     * @ORM\ManyToOne(targetEntity="WishList", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="Demo\CartBundle\Entity\Cart\WishList", inversedBy="items")
      * @ORM\JoinColumn(name="wishlist_id", referencedColumnName="id")
      */
     protected $wishList;

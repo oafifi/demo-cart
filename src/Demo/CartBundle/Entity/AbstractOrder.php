@@ -38,7 +38,7 @@ abstract class AbstractOrder
     protected $address;
 
     /**
-     * @ORM\ManyToMany(targetEntity="OrderItem")
+     * @ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\OrderItem")
      * @ORM\JoinTable(name="order_items",
      *      joinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)}

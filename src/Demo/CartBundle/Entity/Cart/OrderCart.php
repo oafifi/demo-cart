@@ -2,6 +2,9 @@
 
 namespace Demo\CartBundle\Entity\Cart;
 
+use Demo\CartBundle\Entity\OrderElement\OrderItem;
+use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,7 +29,7 @@ class OrderCart implements OrderCartInterface
     /**
      * List to hold the cart items
      *
-     *@ORM\ManyToMany(targetEntity="OrderItem")
+     *@ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\OrderItem")
      * @ORM\JoinTable(name="cart_items",
      *      joinColumns={@ORM\JoinColumn(name="cart_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)}
@@ -81,7 +84,7 @@ class OrderCart implements OrderCartInterface
     /**
      * @inheritDoc
      */
-    public function addItem(AbstractShoppingItem $item)
+    public function addItem(ShoppingItemInterface $item)
     {
         $wishItem = new OrderItem();
         $wishItem->setItem($item);

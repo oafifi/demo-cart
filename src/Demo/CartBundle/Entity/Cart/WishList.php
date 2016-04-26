@@ -2,6 +2,10 @@
 
 namespace Demo\CartBundle\Entity\Cart;
 
+use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\WishOrderItem;
+use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
+use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,7 +30,7 @@ class WishList implements WishListInterface
     /**
      * List to hold the cart items
      *
-     * @ORM\OneToMany(targetEntity="WishOrderItem", mappedBy="wishList")
+     * @ORM\OneToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\WishOrderItem", mappedBy="wishList")
      */
     protected $items;
 
@@ -149,7 +153,7 @@ class WishList implements WishListInterface
     /**
      * @inheritDoc
      */
-    public function addItem(AbstractShoppingItem $item)
+    public function addItem(ShoppingItemInterface $item)
     {
         $wishItem = new WishOrderItem();
         $wishItem->setItem($item);

@@ -26,7 +26,7 @@ class OrderItem implements OrderItemInterface
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ShoppingItem")
+     * @ORM\ManyToOne(targetEntity="Demo\CartBundle\Entity\Product\ShoppingItem")
      * @ORM\JoinColumn(name="item_id", referencedColumnName="id")
      */
     protected $item;
