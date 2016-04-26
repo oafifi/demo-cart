@@ -8,13 +8,13 @@
 
 namespace Demo\CartBundle\Controller;
 
+use Demo\CartBundle\Entity\Product\SaleItem;
+use Demo\CartBundle\Entity\Product\ShoppingItem;
 use Demo\CartBundle\Form\Type\SaleItemType;
-use Demo\CartBundle\Util\FormsUtil;
 use Symfony\Component\HttpFoundation\Request;
 use Demo\CartBundle\Form\Type\ShoppingItemType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Demo\CartBundle\Entity\ShoppingItem;
-use Demo\CartBundle\Entity\SaleItem;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
