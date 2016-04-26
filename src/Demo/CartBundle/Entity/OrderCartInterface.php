@@ -10,7 +10,7 @@ namespace Demo\CartBundle\Entity;
  *
  * On a real project this interface can also define methods for payment and completing the purchase
  */
-interface OrderCartInterface
+interface OrderCartInterface extends CartInterface
 {
     /**
      * Returns the subtotal value of the cart in this cart

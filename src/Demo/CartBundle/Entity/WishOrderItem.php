@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  */
-class WishOrderItem extends OrderItem
+class WishOrderItem extends OrderItem implements WishOrderItemInterface
 {
     /**
      * @ORM\Column(type="text")
@@ -24,18 +24,21 @@ class WishOrderItem extends OrderItem
      */
     protected $important;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="WishList", inversedBy="items")
+     * @ORM\JoinColumn(name="wishlist_id", referencedColumnName="id")
+     */
+    protected $wishList;
+
 
     /**
      * Set comment
      *
      * @param string $comment
-     * @return WishOrderItem
      */
     public function setComment($comment)
     {
         $this->comment = $comment;
-
-        return $this;
     }
 
     /**
@@ -52,13 +55,10 @@ class WishOrderItem extends OrderItem
      * Set important
      *
      * @param boolean $important
-     * @return WishOrderItem
      */
     public function setImportant($important)
     {
         $this->important = $important;
-
-        return $this;
     }
 
     /**
@@ -70,4 +70,14 @@ class WishOrderItem extends OrderItem
     {
         return $this->important;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getWishList()
+    {
+        return $this->wishList;
+    }
+
+
 }

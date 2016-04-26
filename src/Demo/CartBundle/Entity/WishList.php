@@ -2,28 +2,41 @@
 
 namespace Demo\CartBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class WishList
  * @package Demo\CartBundle\Entity
  *
- * Wish list that holds order items.
+ * Wish list that holds wish order items.
  * Provides data access methods.
  *
  * @ORM\Entity
- * @ORM\AssociationOverrides({
- *      @ORM\AssociationOverride(name="itemList",
- *          joinTable=@ORM\JoinTable(
- *              name="wishlist_items",
- *              joinColumns=@ORM\JoinColumn(name="list_id", referencedColumnName="id"),
- *              inverseJoinColumns=@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)
- *          )
- *      )
- * })
  */
-class WishList extends AbstractCart implements EntityDataAccessInterface
+class WishList implements WishListInterface
 {
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * List to hold the cart items
+     *
+     * @ORM\OneToMany(targetEntity="WishOrderItem", mappedBy="wishList")
+     */
+    protected $items;
+
+    /**
+     * name of the cart
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $name;
+
     /**
      * @ORM\Column(type="text")
      */
@@ -34,50 +47,57 @@ class WishList extends AbstractCart implements EntityDataAccessInterface
      */
     protected $public;
 
+
+    //Constructor
+
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }
+
+
+    //Methods
+
     /**
      * @inheritDoc
      */
-    public function save()
+    public function getId()
     {
-        // TODO: Implement save() method.
+        return $this->id;
     }
 
     /**
      * @inheritDoc
      */
-    public function remove()
+    public function getItems()
     {
-        // TODO: Implement remove() method.
+        return $this->items->getValues();
     }
 
     /**
-     * @inheritDoc
+     * @return string
      */
-    public function update()
+    public function getName()
     {
-        // TODO: Implement update() method.
+        return $this->name;
     }
 
     /**
-     * @inheritDoc
+     * @param string $name
      */
-    public static function find($id)
+    public function setName($name)
     {
-        // TODO: Implement find() method.
+        $this->name = $name;
     }
-
 
     /**
      * Set description
      *
      * @param string $description
-     * @return WishList
      */
     public function setDescription($description)
     {
         $this->description = $description;
-
-        return $this;
     }
 
     /**
@@ -94,13 +114,10 @@ class WishList extends AbstractCart implements EntityDataAccessInterface
      * Set publicList
      *
      * @param boolean $public
-     * @return WishList
      */
     public function setPublic($public)
     {
         $this->public = $public;
-
-        return $this;
     }
 
     /**
@@ -114,25 +131,57 @@ class WishList extends AbstractCart implements EntityDataAccessInterface
     }
 
     /**
-     * Add itemList
-     *
-     * @param \Demo\CartBundle\Entity\OrderItem $itemList
-     * @return WishList
+     * @inheritDoc
      */
-    public function addItemList(\Demo\CartBundle\Entity\WishOrderItem $itemList)
+    public function count()
     {
-        $this->itemList[] = $itemList;
-
-        return $this;
+        $this->items->count();
     }
 
     /**
-     * Remove itemList
-     *
-     * @param \Demo\CartBundle\Entity\OrderItem $itemList
+     * @inheritDoc
      */
-    public function removeItemList(\Demo\CartBundle\Entity\OrderItem $itemList)
+    public function clear()
     {
-        $this->itemList->removeElement($itemList);
+        $this->items->clear();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addItem(AbstractShoppingItem $item)
+    {
+        $wishItem = new WishOrderItem();
+        $wishItem->setItem($item);
+
+        $this->addWishOrderItem($wishItem);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function removeItem(OrderItemInterface $item)
+    {
+        return $this->items->removeElement($item);
+    }
+
+    /**
+     * Add item to the list
+     *
+     * @param WishOrderItemInterface $item
+     */
+    public function addWishOrderItem(WishOrderItemInterface $item)
+    {
+        $this->items[] = $item;
+    }
+
+    /**
+     * Remove item from the list
+     *
+     * @param WishOrderItemInterface $item
+     */
+    public function removeWishOrderItem(WishOrderItemInterface $item)
+    {
+        $this->items->removeElement($item);
     }
 }

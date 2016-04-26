@@ -2,6 +2,7 @@
 
 namespace Demo\CartBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,8 +14,99 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  */
-class OrderCart extends AbstractCart implements OrderCartInterface
+class OrderCart implements OrderCartInterface
 {
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * List to hold the cart items
+     *
+     *@ORM\ManyToMany(targetEntity="OrderItem")
+     * @ORM\JoinTable(name="cart_items",
+     *      joinColumns={@ORM\JoinColumn(name="cart_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    protected $items;
+
+
+    //Constructor
+
+
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }
+
+
+    //Methods
+
+    /**
+     * @inheritDoc
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getItems()
+    {
+        return $this->items->getValues();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function count()
+    {
+        $this->items->count();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function clear()
+    {
+        $this->items->clear();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addItem(AbstractShoppingItem $item)
+    {
+        $wishItem = new OrderItem();
+        $wishItem->setItem($item);
+
+        $this->addOrderItem($wishItem);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function removeItem(OrderItemInterface $item)
+    {
+        return $this->items->removeElement($item);
+    }
+
+    /**
+     * Add item to the list
+     *
+     * @param OrderItemInterface $item
+     */
+    public function addOrderItem(OrderItemInterface $item)
+    {
+        $this->items[] = $item;
+    }
+
     /**
      * 
      * @inheritDoc
@@ -22,7 +114,7 @@ class OrderCart extends AbstractCart implements OrderCartInterface
     public function getSubtotal()
     {
         $subtotal = 0;
-        foreach($this->itemList as $orderItem){
+        foreach($this->items as $orderItem){
             $subtotal += $orderItem->getTotal();
         }
 
