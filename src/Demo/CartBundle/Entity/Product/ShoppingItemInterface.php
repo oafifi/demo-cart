@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\Product;
 
 use Doctrine\ORM\Mapping as ORM;
 

@@ -6,7 +6,7 @@
  * Time: 6:17 PM
  */
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\Product;
 
 
 interface SaleItemInterface
