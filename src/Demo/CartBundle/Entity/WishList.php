@@ -119,7 +119,7 @@ class WishList extends AbstractCart implements EntityDataAccessInterface
      * @param \Demo\CartBundle\Entity\OrderItem $itemList
      * @return WishList
      */
-    public function addItemList(\Demo\CartBundle\Entity\OrderItem $itemList)
+    public function addItemList(\Demo\CartBundle\Entity\WishOrderItem $itemList)
     {
         $this->itemList[] = $itemList;
 
