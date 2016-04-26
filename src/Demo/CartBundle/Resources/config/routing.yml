@@ -7,3 +7,13 @@ demo_cart_product_create:
     defaults: { _controller: DemoCartBundle:Product:create, type: shopping-item }
     requirements:
         type: shopping-item|sale-item
+
+demo_cart_product_showall:
+    path:     /product/list
+    defaults: { _controller: DemoCartBundle:Product:listAll }
+
+demo_cart_product_view:
+    path:     /product/{id}
+    defaults: { _controller: DemoCartBundle:Product:view }
+    requirements:
+            type: \d+
