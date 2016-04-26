@@ -6,7 +6,9 @@
  * Time: 2:00 AM
  */
 
-namespace Demo\CartBundle\Entity;
+namespace Demo\CartBundle\Entity\Cart;
+
+use Demo\CartBundle\Entity\OrderElement\OrderItem;
 
 /**
  * Class CartManager
@@ -24,7 +26,6 @@ class CartManager extends AbstractCartManager
     public function create()
     {
         $cart = new OrderCart();
-        $cart->setName("Shopping Cart");
 
         $this->em->persist($cart);
         $this->em->flush();
