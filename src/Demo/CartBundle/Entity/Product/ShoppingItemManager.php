@@ -18,12 +18,15 @@ namespace Demo\CartBundle\Entity\Product;
  */
 class ShoppingItemManager extends AbstractShoppingItemManager
 {
+    /**
+     * Shopping item repository
+     */
     const REPO = 'DemoCartBundle:Product\ShoppingItem';
 
     /**
      * @inheritDoc
      */
-    public function create(ShoppingItem $item)
+    public function create(ShoppingItemInterface $item)
     {
         $this->em->persist($item);
         $this->em->flush();
@@ -44,7 +47,7 @@ class ShoppingItemManager extends AbstractShoppingItemManager
     /**
      * @inheritDoc
      */
-    public function update(ShoppingItem $item)
+    public function update(ShoppingItemInterface $item)
     {
         $item = $this->em->merge($item);
         $this->em->flush();

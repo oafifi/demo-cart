@@ -8,7 +8,7 @@
 
 namespace Demo\CartBundle\Entity\Product;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * Class AbstractShoppingItemManager
@@ -21,7 +21,7 @@ abstract class AbstractShoppingItemManager implements ShoppingItemManagerInterfa
 {
     protected $em;
 
-    function __construct(EntityManager $em)
+    function __construct(ObjectManager $em)
     {
         $this->em = $em;
     }
@@ -29,7 +29,7 @@ abstract class AbstractShoppingItemManager implements ShoppingItemManagerInterfa
     /**
      * @inheritDoc
      */
-    public abstract function create(ShoppingItem $item);
+    public abstract function create(ShoppingItemInterface $item);
 
     /**
      * @inheritDoc
@@ -39,7 +39,7 @@ abstract class AbstractShoppingItemManager implements ShoppingItemManagerInterfa
     /**
      * @inheritDoc
      */
-    public abstract function update(ShoppingItem $item);
+    public abstract function update(ShoppingItemInterface $item);
 
     /**
      * @inheritDoc

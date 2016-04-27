@@ -1,3 +1,7 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
 {% for item in items %}
     <div>
         <ul>
@@ -8,5 +12,6 @@
         </ul>
     </div>
     <br>
-    <br>
 {% endfor %}
+
+{% endblock %}

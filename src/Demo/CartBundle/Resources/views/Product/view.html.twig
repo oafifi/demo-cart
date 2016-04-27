@@ -1,3 +1,7 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
 <div>
     <ul>
         <li>Name:    {{ item.name }}</li>
@@ -6,3 +10,5 @@
         <li>inStock:    {{ item.inStock }}</li>
     </ul>
 </div>
+
+{% endblock %}
