@@ -76,33 +76,17 @@ class CartManager extends AbstractCartManager
          */
 
         $cart = $this->findById(1); //assume this is the user cart (To be omitted)
-        $orderItem = new OrderItem();
-        $orderItem->setItem($item);
 
-        $cart->addItemList($orderItem);
+        $orderItem = $cart->addItem($item);
 
-        $this->update($cart);
+        if($orderItem->getId()){
+            $this->em->merge($orderItem);
+        }
+        else{
+            $this->em->persist($orderItem);
+        }
 
-        //TODO: Test
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function addOrderItem(OrderItemInterface $item)
-    {
-        /*
-         * Here should be logic to get user cart (assuming that every user is assigned one cart)
-         * I will get cart with id = 1 for testing purpose
-         */
-
-        $cart = $this->findById(1); //assume this is the user cart (To be omitted)
-
-        $cart->addItemList($item);
-
-        $this->update($cart);
-
-        //TODO: Test
+        $this->em->flush();
     }
 
     /**

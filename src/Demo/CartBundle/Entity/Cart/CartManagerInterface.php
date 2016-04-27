@@ -63,14 +63,6 @@ interface CartManagerInterface
     public function addShoppingItem(ShoppingItemInterface $item);
 
     /**
-     * Add order item to the cart
-     *
-     * @param OrderItemInterface $item
-     * @return mixed
-     */
-    public function addOrderItem(OrderItemInterface $item);
-
-    /**
      * Add wish list item to the cart
      *
      * @param WishOrderItemInterface $item

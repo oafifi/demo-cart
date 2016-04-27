@@ -101,7 +101,7 @@ class OrderCart implements OrderCartInterface
         $orderItem->setItem($item);
         $orderItem->setQuantity(1);
 
-        $this->addOrderItem($orderItem);
+        $this->items[] = $orderItem;
 
         return $orderItem;
     }
@@ -141,16 +141,6 @@ class OrderCart implements OrderCartInterface
         return $result[0];
     }
 
-
-    /**
-     * Add item to the list
-     *
-     * @param OrderItemInterface $item
-     */
-    public function addOrderItem(OrderItemInterface $item)
-    {
-        $this->items[] = $item;
-    }
 
     /**
      * 

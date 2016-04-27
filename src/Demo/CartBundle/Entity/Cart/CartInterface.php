@@ -46,6 +46,7 @@ interface CartInterface
     /**
      * Check if the cart contains this shopping item
      *
+     * @param ShoppingItemInterface $item
      * @return OrderItemInterface
      */
     public function containsItem(ShoppingItemInterface $item);
