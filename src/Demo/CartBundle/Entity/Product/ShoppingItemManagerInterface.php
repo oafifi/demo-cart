@@ -22,7 +22,7 @@ interface ShoppingItemManagerInterface
      * Create new shopping item (product)
      *
      * @param $item
-     * @return mixed
+     * @return ShoppingItemInterface
      */
     public function create(ShoppingItemInterface $item);
 
@@ -30,7 +30,6 @@ interface ShoppingItemManagerInterface
      * Delete item by id
      *
      * @param $item
-     * @return mixed
      */
     public function delete($item);
 
@@ -38,7 +37,7 @@ interface ShoppingItemManagerInterface
      * Update the item
      *
      * @param $item
-     * @return mixed
+     * @return ShoppingItemInterface
      */
     public function update(ShoppingItemInterface $item);
 
@@ -46,14 +45,14 @@ interface ShoppingItemManagerInterface
      * find item by id
      *
      * @param $id
-     * @return mixed
+     * @return ShoppingItemInterface
      */
     public function findById($id);
 
     /**
      * Get all shopping items [for testing]
      *
-     * @return mixed
+     * @return ShoppingItemInterface[]
      */
     public function findAll();
 }

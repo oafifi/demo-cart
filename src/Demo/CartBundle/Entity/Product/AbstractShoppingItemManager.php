@@ -20,10 +20,12 @@ use Doctrine\Common\Persistence\ObjectManager;
 abstract class AbstractShoppingItemManager implements ShoppingItemManagerInterface
 {
     protected $em;
+    protected $repo;
 
-    function __construct(ObjectManager $em)
+    function __construct(ObjectManager $em,$repository)
     {
         $this->em = $em;
+        $this->repo = $repository;
     }
 
     /**
