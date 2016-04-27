@@ -4,6 +4,7 @@ namespace Demo\CartBundle\Entity\Cart;
 
 use Demo\CartBundle\Entity\OrderElement\OrderItem;
 use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
 use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -99,6 +100,34 @@ class OrderCart implements OrderCartInterface
     {
         return $this->items->removeElement($item);
     }
+
+    /**
+     * @inheritDoc
+     *
+     * The order cart can hold a max of one order item of a certain product, but many of wish-list order items
+     * of the same shopping item if they are from different wish-lists.
+     * This method checks if this shopping item is added as order item or not, if found, it will return the order item
+     * to edit it or whatever it is needed in.
+     *
+     */
+    public function containsItem(ShoppingItemInterface $item)
+    {
+        $id = $item->getId();
+
+        $closure = function($orderItem) use($id){
+
+            return ($orderItem->getItem()->getId() == $id) && (!($orderItem instanceof WishOrderItemInterface));
+        };
+
+        $result = $this->items->filter($closure);
+
+        if($result->isEmpty()) {
+            return null;
+        }
+
+        return $result[0];
+    }
+
 
     /**
      * Add item to the list

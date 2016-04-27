@@ -44,6 +44,13 @@ interface CartInterface
     public function removeItem(OrderItemInterface $item);
 
     /**
+     * Check if the cart contains this shopping item
+     *
+     * @return OrderItemInterface
+     */
+    public function containsItem(ShoppingItemInterface $item);
+
+    /**
      * Remove all items in the cart
      */
     public function clear();

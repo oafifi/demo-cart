@@ -170,6 +170,28 @@ class WishList implements WishListInterface
     }
 
     /**
+     * @inheritDoc
+     */
+    public function containsItem(ShoppingItemInterface $item)
+    {
+        $id = $item->getId();
+
+        $closure = function($orderItem) use($id){
+
+            return ($orderItem->getItem()->getId() == $id);
+        };
+
+        $result = $this->items->filter($closure);
+
+        if($result->isEmpty()) {
+            return null;
+        }
+
+        return $result[0];
+    }
+
+
+    /**
      * Add item to the list
      *
      * @param WishOrderItemInterface $item
