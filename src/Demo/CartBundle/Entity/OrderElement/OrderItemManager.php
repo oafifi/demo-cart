@@ -11,12 +11,11 @@ namespace Demo\CartBundle\Entity\OrderElement;
 
 class OrderItemManager extends AbstractOrderItemManager
 {
-    const REPO = 'DemoCartBundle:OrderElement\OrderItem';    //repository used
 
     /**
      * @inheritDoc
      */
-    public function create(OrderItem $item)
+    public function create(OrderItemInterface $item)
     {
         $this->em->persist($item);
         $this->em->flush();
@@ -37,7 +36,7 @@ class OrderItemManager extends AbstractOrderItemManager
     /**
      * @inheritDoc
      */
-    public function update(OrderItem $item)
+    public function update(OrderItemInterface $item)
     {
         $item = $this->em->merge($item);
         $this->em->flush();
@@ -50,7 +49,7 @@ class OrderItemManager extends AbstractOrderItemManager
      */
     public function findById($id)
     {
-        return $this->em->getRepository(self::REPO)->find($id);
+        return $this->em->getRepository($this->repo)->find($id);
     }
 
     /**
@@ -58,7 +57,7 @@ class OrderItemManager extends AbstractOrderItemManager
      */
     public function findAll()
     {
-        return $this->em->getRepository(self::REPO)->findAll();
+        return $this->em->getRepository($this->repo)->findAll();
     }
 
 

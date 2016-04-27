@@ -9,21 +9,23 @@
 namespace Demo\CartBundle\Entity\OrderElement;
 
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
 
 abstract class AbstractOrderItemManager implements OrderItemManagerInterface
 {
     protected $em;
+    protected $repo;
 
-    function __construct(EntityManager $em)
+    function __construct(ObjectManager $em,$repository)
     {
         $this->em = $em;
+        $this->repo = $repository;
     }
 
     /**
      * @inheritDoc
      */
-    public abstract function create(OrderItem $item);
+    public abstract function create(OrderItemInterface $item);
 
     /**
      * @inheritDoc
@@ -33,7 +35,7 @@ abstract class AbstractOrderItemManager implements OrderItemManagerInterface
     /**
      * @inheritDoc
      */
-    public abstract function update(OrderItem $item);
+    public abstract function update(OrderItemInterface $item);
 
     /**
      * @inheritDoc
