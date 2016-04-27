@@ -87,10 +87,23 @@ class OrderCart implements OrderCartInterface
      */
     public function addItem(ShoppingItemInterface $item)
     {
-        $wishItem = new OrderItem();
-        $wishItem->setItem($item);
+        $foundItem = $this->containsItem($item);
 
-        $this->addOrderItem($wishItem);
+        if($foundItem){
+
+            $oldQuantity = $foundItem->getQuantity();
+            $foundItem->setQuantity($oldQuantity+1);
+
+            return $foundItem;
+        }
+
+        $orderItem = new OrderItem();
+        $orderItem->setItem($item);
+        $orderItem->setQuantity(1);
+
+        $this->addOrderItem($orderItem);
+
+        return $orderItem;
     }
 
     /**
