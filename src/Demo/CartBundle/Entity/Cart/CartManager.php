@@ -9,6 +9,9 @@
 namespace Demo\CartBundle\Entity\Cart;
 
 use Demo\CartBundle\Entity\OrderElement\OrderItem;
+use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
+use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
 
 /**
  * Class CartManager
@@ -19,7 +22,6 @@ use Demo\CartBundle\Entity\OrderElement\OrderItem;
  */
 class CartManager extends AbstractCartManager
 {
-
     /**
      * @inheritDoc
      */
@@ -38,7 +40,7 @@ class CartManager extends AbstractCartManager
      */
     public function delete($cart)
     {
-        $cart = $this->em->getRepository('DemoCartBundle:OrderCart')->find($cart);
+        $cart = $this->em->getRepository($this->repo)->find($cart);
         $this->em->remove($cart);
         $this->em->flush();
     }
@@ -46,7 +48,7 @@ class CartManager extends AbstractCartManager
     /**
      * @inheritDoc
      */
-    public function update($cart)
+    public function update(OrderCartInterface $cart)
     {
         $cart = $this->em->merge($cart);
         $this->em->flush();
@@ -59,14 +61,14 @@ class CartManager extends AbstractCartManager
      */
     public function findById($id)
     {
-        return $this->em->getRepository('DemoCartBundle:OrderCart')->find($id);
+        return $this->em->getRepository($this->repo)->find($id);
     }
 
 
     /**
      * @inheritDoc
      */
-    public function addShoppingItem($item, $quantity)
+    public function addShoppingItem(ShoppingItemInterface $item)
     {
         /*
          * Here should be logic to get user cart (assuming that every user is assigned one cart)
@@ -76,7 +78,6 @@ class CartManager extends AbstractCartManager
         $cart = $this->findById(1); //assume this is the user cart (To be omitted)
         $orderItem = new OrderItem();
         $orderItem->setItem($item);
-        $orderItem->setQuantity($quantity);
 
         $cart->addItemList($orderItem);
 
@@ -88,7 +89,7 @@ class CartManager extends AbstractCartManager
     /**
      * @inheritDoc
      */
-    public function addOrderItem($item)
+    public function addOrderItem(OrderItemInterface $item)
     {
         /*
          * Here should be logic to get user cart (assuming that every user is assigned one cart)
@@ -107,7 +108,7 @@ class CartManager extends AbstractCartManager
     /**
      * @inheritDoc
      */
-    public function addWishOrderItem($item)
+    public function addWishOrderItem(WishOrderItemInterface $item)
     {
         // TODO: Implement addWishOrderItem() method.
     }
@@ -115,7 +116,7 @@ class CartManager extends AbstractCartManager
     /**
      * @inheritDoc
      */
-    public function removeItem($item)
+    public function removeItem(OrderItemInterface $item)
     {
         // TODO: Implement removeItem() method.
     }
@@ -134,6 +135,6 @@ class CartManager extends AbstractCartManager
 
         $cart->emptyCart();
 
-        $this->update($cart);
+        return $this->update($cart);
     }
 }

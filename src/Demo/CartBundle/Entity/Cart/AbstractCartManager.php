@@ -9,7 +9,10 @@
 namespace Demo\CartBundle\Entity\Cart;
 
 
-use Doctrine\ORM\EntityManager;
+use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
+use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * Base class for classes implementing CartManagerInterface
@@ -21,10 +24,12 @@ use Doctrine\ORM\EntityManager;
 abstract class AbstractCartManager implements CartManagerInterface
 {
     protected $em;
+    protected $repo;
 
-    function __construct(EntityManager $em)
+    function __construct(ObjectManager $em,$repository)
     {
         $this->em = $em;
+        $this->repo = $repository;
     }
 
     /**
@@ -40,7 +45,7 @@ abstract class AbstractCartManager implements CartManagerInterface
     /**
      * @inheritDoc
      */
-    public abstract function update($cart);
+    public abstract function update(OrderCartInterface $cart);
 
     /**
      * @inheritDoc
@@ -50,22 +55,22 @@ abstract class AbstractCartManager implements CartManagerInterface
     /**
      * @inheritDoc
      */
-    public abstract function addShoppingItem($item, $quantity);
+    public abstract function addShoppingItem(ShoppingItemInterface $item);
 
     /**
      * @inheritDoc
      */
-    public abstract function addOrderItem($item);
+    public abstract function addOrderItem(OrderItemInterface $item);
 
     /**
      * @inheritDoc
      */
-    public abstract function addWishOrderItem($item);
+    public abstract function addWishOrderItem(WishOrderItemInterface $item);
 
     /**
      * @inheritDoc
      */
-    public abstract function removeItem($item);
+    public abstract function removeItem(OrderItemInterface $item);
 
     /**
      * @inheritDoc

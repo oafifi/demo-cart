@@ -7,6 +7,9 @@
  */
 
 namespace Demo\CartBundle\Entity\Cart;
+use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
+use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
 
 /**
  * Interface CartManagerInterface
@@ -23,7 +26,7 @@ interface CartManagerInterface
      * Sticking to the convention that every user has one shopping cart,
      * the cart should be created and assigned to user upon user creation.
      *
-     * @return mixed
+     * @return OrderCartInterface
      */
     public function create();
 
@@ -38,56 +41,55 @@ interface CartManagerInterface
     /**
      * Update the cart
      *
-     * @param $cart
-     * @return mixed
+     * @param OrderCartInterface $cart
+     * @return OrderCartInterface
      */
-    public function update($cart);
+    public function update(OrderCartInterface $cart);
 
     /**
      * find cart by id
      *
      * @param $id
-     * @return mixed
+     * @return OrderCartInterface
      */
     public function findById($id);
 
     /**
      * Add shopping item to the cart
      *
-     * @param $item
-     * @param $quantity
-     * @return mixed
+     * @param ShoppingItemInterface $item
+     * @return OrderItemInterface
      */
-    public function addShoppingItem($item, $quantity);
+    public function addShoppingItem(ShoppingItemInterface $item);
 
     /**
      * Add order item to the cart
      *
-     * @param $item
+     * @param OrderItemInterface $item
      * @return mixed
      */
-    public function addOrderItem($item);
+    public function addOrderItem(OrderItemInterface $item);
 
     /**
      * Add wish list item to the cart
      *
-     * @param $item
+     * @param WishOrderItemInterface $item
      * @return mixed
      */
-    public function addWishOrderItem($item);
+    public function addWishOrderItem(WishOrderItemInterface $item);
 
     /**
      * remove item from the cart
      *
-     * @param $item
+     * @param OrderItemInterface $item
      * @return mixed
      */
-    public function removeItem($item);
+    public function removeItem(OrderItemInterface $item);
 
     /**
      * Empty the cart, remove all elements
      *
-     * @return mixed
+     * @return OrderCartInterface
      */
     public function emptyCart();
 }
