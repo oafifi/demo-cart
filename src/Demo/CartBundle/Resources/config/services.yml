@@ -6,7 +6,7 @@ services:
 #Entity managers
     demo_cart.cart_manager:
         class: Demo\CartBundle\Entity\Cart\CartManager
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments: ["@doctrine.orm.entity_manager","DemoCartBundle:Cart\OrderCart"]
 
     demo_cart.wish_list_manager:
             class: Demo\CartBundle\Entity\Cart\WishListManager
@@ -14,8 +14,8 @@ services:
 
     demo_cart.shopping_item_manager:
             class: Demo\CartBundle\Entity\Product\ShoppingItemManager
-            arguments: ["@doctrine.orm.entity_manager"]
+            arguments: ["@doctrine.orm.entity_manager","DemoCartBundle:Product\ShoppingItem"]
 
     demo_cart.order_item_manager:
                 class: Demo\CartBundle\Entity\OrderElement\OrderItemManager
-                arguments: ["@doctrine.orm.entity_manager"]
+                arguments: ["@doctrine.orm.entity_manager","DemoCartBundle:OrderElement\OrderItem"]
