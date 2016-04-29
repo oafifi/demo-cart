@@ -30,7 +30,7 @@ class OrderCart implements OrderCartInterface
     /**
      * List to hold the cart items
      *
-     *@ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\OrderItem")
+     *@ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\OrderItem", orphanRemoval=true)
      * @ORM\JoinTable(name="cart_items",
      *      joinColumns={@ORM\JoinColumn(name="cart_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)}
@@ -90,13 +90,11 @@ class OrderCart implements OrderCartInterface
         $foundItem = $this->containsItem($item);
 
         if($foundItem){
-
             $oldQuantity = $foundItem->getQuantity();
             $foundItem->setQuantity($oldQuantity+1);
 
             return $foundItem;
         }
-
         $orderItem = new OrderItem();
         $orderItem->setItem($item);
         $orderItem->setQuantity(1);
@@ -128,8 +126,7 @@ class OrderCart implements OrderCartInterface
         $id = $item->getId();
 
         $closure = function($orderItem) use($id){
-
-            return ($orderItem->getItem()->getId() == $id) && (!($orderItem instanceof WishOrderItemInterface));
+            return (($orderItem->getItem()->getId() == $id) and (!($orderItem instanceof WishOrderItemInterface)));
         };
 
         $result = $this->items->filter($closure);
@@ -138,7 +135,7 @@ class OrderCart implements OrderCartInterface
             return null;
         }
 
-        return $result[0];
+        return $result->first();
     }
 
 

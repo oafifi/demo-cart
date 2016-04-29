@@ -1,0 +1,29 @@
+{% extends 'DemoCartBundle:Default:base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(emptyForm) }}
+    {{ form_errors(emptyForm) }}
+    {{ form_row(emptyForm.cart_id, {'attr': {'value': cart.id}}) }}
+    {{ form_end(emptyForm) }}
+
+    {% for item in cart.items %}
+        <div>
+            <ul>
+                <a href="{{ path('demo_cart_product_view', {'id': item.item.id}) }}">
+                    <li>Name:    {{ item.item.name }}</li>
+                </a>
+                <li>price:    {{ item.item.price }}</li>
+                <li>description:    {{ item.item.description }}</li>
+                <li>inStock:    {{ item.item.inStock }}</li>
+                <li>Quantity:    {{ item.quantity }}</li>
+            </ul>
+            <a href="{{ path('demo_cart_orderitem_edit', {'id': item.id}) }}">Edit</a>
+            {{ form_start(item.removeForm) }}
+                {{ form_errors(item.removeForm) }}
+                {{ form_row(item.removeForm.order_item_id, {'attr': {'value': item.id}}) }}
+            {{ form_end(item.removeForm) }}
+        </div>
+    {% endfor %}
+
+{% endblock %}
