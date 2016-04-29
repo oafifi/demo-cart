@@ -1,15 +1,21 @@
-{% extends '::base.html.twig' %}
+{% extends 'DemoCartBundle:Default:base.html.twig' %}
 
 {% block body %}
 
 {% for item in items %}
     <div>
         <ul>
-            <li>Name:    {{ item.name }}</li>
+            <a href="{{ path('demo_cart_product_view', {'id': item.id}) }}">
+                <li>Name:    {{ item.name }}</li>
+            </a>
             <li>price:    {{ item.price }}</li>
             <li>description:    {{ item.description }}</li>
             <li>inStock:    {{ item.inStock }}</li>
         </ul>
+        {{ form_start(item.form) }}
+            {{ form_errors(item.form) }}
+            {{ form_row(item.form.product_id, {'attr': {'value': item.id}}) }}
+        {{ form_end(item.form) }}
     </div>
     <br>
 {% endfor %}

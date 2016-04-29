@@ -10,6 +10,7 @@ namespace Demo\CartBundle\Controller;
 
 use Demo\CartBundle\Entity\Product\SaleItem;
 use Demo\CartBundle\Entity\Product\ShoppingItem;
+use Demo\CartBundle\Form\Type\AddToCartType;
 use Demo\CartBundle\Form\Type\SaleItemType;
 use Symfony\Component\HttpFoundation\Request;
 use Demo\CartBundle\Form\Type\ShoppingItemType;
@@ -46,25 +47,46 @@ class ProductController extends Controller
         return $this->render('DemoCartBundle:Product:create.html.twig', array('form' => $form->createView()));
     }
 
-    public function listAllAction()
+    public function listAllAction() //For testing only, not logic to get all elements
     {
         $pm = $this->get("demo_cart.shopping_item_manager");
 
         $items = $pm->findAll();
 
-        //TODO: add "add to cart"
+        //Add the add to cart form, can ve injected as a service also
+        foreach($items as $item) {
+            $form = $this->createForm(AddToCartType::class, null, array(
+                'action' => $this->generateUrl('demo_cart_cart_add_item'),
+                'method' => 'POST',
+            ));
 
-        return $this->render('DemoCartBundle:Product:list.html.twig', array('items' => $items));
+            $item->form = $form->createView();
+        }
+
+        return $this->render('DemoCartBundle:Product:list.html.twig', array(
+            'items' => $items,
+        ));
     }
 
-    public function viewAction(Request $request,$id)
+    public function viewAction($id)
     {
         $pm = $this->get("demo_cart.shopping_item_manager");
 
         $item = $pm->findById($id);
 
-        //TODO: add "add to cart"
+        if(!$item)
+        {
+            throw $this->createNotFoundException('The item is not found');
+        }
 
-        return $this->render('DemoCartBundle:Product:view.html.twig', array('item' => $item));
+        $addToCartForm = $this->createForm(AddToCartType::class, null, array(
+            'action' => $this->generateUrl('demo_cart_cart_add_item'),
+            'method' => 'POST',
+        ));
+
+        return $this->render('DemoCartBundle:Product:view.html.twig', array(
+            'item' => $item,
+            'addToCartForm' => $addToCartForm->createView()
+        ));
     }
 }

@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'DemoCartBundle:Default:base.html.twig' %}
 
 {% block body %}
 
@@ -9,6 +9,10 @@
         <li>description:    {{ item.description }}</li>
         <li>inStock:    {{ item.inStock }}</li>
     </ul>
+    {{ form_start(addToCartForm) }}
+        {{ form_errors(addToCartForm) }}
+        {{ form_row(addToCartForm.product_id, {'attr': {'value': item.id}}) }}
+    {{ form_end(addToCartForm) }}
 </div>
 
 {% endblock %}
