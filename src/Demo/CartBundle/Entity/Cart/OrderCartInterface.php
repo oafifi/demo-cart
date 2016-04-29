@@ -6,17 +6,10 @@ namespace Demo\CartBundle\Entity\Cart;
  * Interface OrderCartInterface
  * @package Demo\CartBundle\Entity
  *
- * Defines an entity that can do checkout and create order from its data
+ * Defines a cart that can do checkout and create order from its order items
  *
- * On a real project this interface can also define methods for payment and completing the purchase
  */
-interface OrderCartInterface extends CartInterface
+interface OrderCartInterface extends CartInterface, CheckoutInterface
 {
-    /**
-     * Returns the subtotal value of the cart in this cart
-     * subtotal value: value of elements in the cart without shipping fees, taxes .. etc
-     *
-     * @return mixed
-     */
-    public function getSubtotal();
+
 }
