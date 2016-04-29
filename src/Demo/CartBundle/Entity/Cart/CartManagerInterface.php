@@ -21,6 +21,13 @@ use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
 interface CartManagerInterface
 {
     /**
+     * Return the current user cart
+     *
+     * @return OrderCartInterface
+     */
+    public function getUserCart();
+
+    /**
      * Create new cart
      *
      * Sticking to the convention that every user has one shopping cart,

@@ -35,6 +35,12 @@ abstract class AbstractCartManager implements CartManagerInterface
     /**
      * @inheritDoc
      */
+    public abstract function getUserCart();
+
+
+    /**
+     * @inheritDoc
+     */
     public abstract function create();
 
     /**

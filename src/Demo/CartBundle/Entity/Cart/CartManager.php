@@ -12,6 +12,8 @@ use Demo\CartBundle\Entity\OrderElement\OrderItem;
 use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
 use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
  * Class CartManager
@@ -22,6 +24,20 @@ use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
  */
 class CartManager extends AbstractCartManager
 {
+
+    /**
+     * @inheritDoc
+     */
+    public function getUserCart()
+    {
+        /*
+         * Here should be logic to get user cart (assuming that every user is assigned one cart)
+         * I will get cart with id = 1 for testing purpose
+         */
+
+        return $this->findById(1); //assume this is the user cart (To be omitted)
+    }
+
     /**
      * @inheritDoc
      */
@@ -75,7 +91,7 @@ class CartManager extends AbstractCartManager
          * I will get cart with id = 1 for testing purpose
          */
 
-        $cart = $this->findById(1); //assume this is the user cart (To be omitted)
+        $cart = $this->getUserCart();
 
         $orderItem = $cart->addItem($item);
 
@@ -87,6 +103,8 @@ class CartManager extends AbstractCartManager
         }
 
         $this->em->flush();
+
+        return $orderItem;
     }
 
     /**
@@ -102,7 +120,13 @@ class CartManager extends AbstractCartManager
      */
     public function removeItem(OrderItemInterface $item)
     {
-        // TODO: Implement removeItem() method.
+        $cart = $this->getUserCart();
+
+        $removed = $cart->removeItem($item);
+
+        $this->em->flush();
+
+        return $removed;
     }
 
     /**
@@ -115,10 +139,10 @@ class CartManager extends AbstractCartManager
          * I will get cart with id = 1 for testing purpose
          */
 
-        $cart = $this->findById(1); //assume this is the user cart (To be omitted)
+        $cart = $this->getUserCart();
 
-        $cart->emptyCart();
+        $cart->clear();
 
-        return $this->update($cart);
+        $this->em->flush();
     }
 }
