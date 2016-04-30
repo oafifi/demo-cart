@@ -134,4 +134,17 @@ abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
 
         return $result->first();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public abstract function getSubtotal();
+
+    /**
+     * @inheritDoc
+     */
+    public abstract function checkout();
+
+
+
 }
