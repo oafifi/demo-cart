@@ -30,7 +30,7 @@ class WishList implements WishListInterface
     /**
      * List to hold the cart items
      *
-     * @ORM\OneToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\WishOrderItem", mappedBy="wishList")
+     * @ORM\OneToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\ListOrderItem", mappedBy="list")
      */
     protected $items;
 
@@ -176,7 +176,7 @@ class WishList implements WishListInterface
     {
         $id = $item->getId();
 
-        $closure = function($orderItem) use($id){
+        $closure = function(AbstractOrderItem $orderItem) use($id){
 
             return ($orderItem->getItem()->getId() == $id);
         };
