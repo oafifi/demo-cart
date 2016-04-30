@@ -13,7 +13,7 @@
                 <a href="{{ path('demo_cart_product_view', {'id': item.item.id}) }}">
                     <li>Name:    {{ item.item.name }}</li>
                 </a>
-                <li>price:    {{ item.item.price }}</li>
+                <li>price:    {{ item.item.getNetPrice() }}</li>
                 <li>description:    {{ item.item.description }}</li>
                 <li>inStock:    {{ item.item.inStock }}</li>
                 <li>Quantity:    {{ item.quantity }}</li>
@@ -25,5 +25,7 @@
             {{ form_end(item.removeForm) }}
         </div>
     {% endfor %}
+
+    <h3>Subtotal = {{ cart.getSubtotal() }} $</h3>
 
 {% endblock %}
