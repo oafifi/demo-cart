@@ -24,7 +24,7 @@ interface OrderItemManagerInterface
      * @param $item
      * @return mixed
      */
-    public function create(OrderItemInterface $item);
+    public function create(AbstractOrderItem $item);
 
     /**
      * Delete item by id
@@ -40,7 +40,7 @@ interface OrderItemManagerInterface
      * @param $item
      * @return mixed
      */
-    public function update(OrderItemInterface $item);
+    public function update(AbstractOrderItem $item);
 
     /**
      * find item by id

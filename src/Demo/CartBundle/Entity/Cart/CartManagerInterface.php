@@ -7,7 +7,7 @@
  */
 
 namespace Demo\CartBundle\Entity\Cart;
-use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 
@@ -65,7 +65,7 @@ interface CartManagerInterface
      * Add shopping item to the cart
      *
      * @param AbstractShoppingItem $item
-     * @return OrderItemInterface
+     * @return AbstractOrderItem
      */
     public function addShoppingItem(AbstractShoppingItem $item);
 
@@ -80,10 +80,10 @@ interface CartManagerInterface
     /**
      * remove item from the cart
      *
-     * @param OrderItemInterface $item
+     * @param AbstractOrderItem $item
      * @return mixed
      */
-    public function removeItem(OrderItemInterface $item);
+    public function removeItem(AbstractOrderItem $item);
 
     /**
      * Empty the cart, remove all elements

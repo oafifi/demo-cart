@@ -9,7 +9,7 @@
 namespace Demo\CartBundle\Entity\Cart;
 
 use Demo\CartBundle\Entity\OrderElement\OrderItem;
-use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -118,7 +118,7 @@ class CartManager extends AbstractCartManager
     /**
      * @inheritDoc
      */
-    public function removeItem(OrderItemInterface $item)
+    public function removeItem(AbstractOrderItem $item)
     {
         $cart = $this->getUserCart();
 

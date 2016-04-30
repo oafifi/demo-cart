@@ -11,8 +11,38 @@ namespace Demo\CartBundle\Entity\OrderElement;
 
 use Demo\CartBundle\Entity\Cart\WishListInterface;
 
-interface WishOrderItemInterface extends OrderItemInterface
+interface WishOrderItemInterface extends ListItemInterface
 {
+
+    /**
+     * Add sub orders bought from this wish item
+     *
+     * @param ListOrderItem $subItem
+     * @return mixed
+     */
+    public function addSubItem(ListOrderItem $subItem);
+
+    /**
+     * returns a list of sub orders of this order
+     *
+     * @return ListOrderItem[]
+     */
+    public function getSubItems();
+
+    /**
+     * returns the remaining wanted quantity of this item
+     *
+     * @return int
+     */
+    public function remainingCount();
+
+    /**
+     * checks if this wish item is fulfilled (bought)
+     *
+     * @return bool
+     */
+    public function isFulfilled();
+
     /**
      * Set comment
      *
@@ -40,9 +70,4 @@ interface WishOrderItemInterface extends OrderItemInterface
      * @return boolean
      */
     public function getImportant();
-
-    /**
-     * @return WishListInterface
-     */
-    public function getWishList();
 }

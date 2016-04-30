@@ -25,7 +25,7 @@ abstract class AbstractOrderItemManager implements OrderItemManagerInterface
     /**
      * @inheritDoc
      */
-    public abstract function create(OrderItemInterface $item);
+    public abstract function create(AbstractOrderItem $item);
 
     /**
      * @inheritDoc
@@ -35,7 +35,7 @@ abstract class AbstractOrderItemManager implements OrderItemManagerInterface
     /**
      * @inheritDoc
      */
-    public abstract function update(OrderItemInterface $item);
+    public abstract function update(AbstractOrderItem $item);
 
     /**
      * @inheritDoc

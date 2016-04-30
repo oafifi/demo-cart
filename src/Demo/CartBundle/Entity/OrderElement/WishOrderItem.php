@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  */
-class WishOrderItem extends OrderItem implements WishOrderItemInterface
+class WishOrderItem extends ListOrderItem implements WishOrderItemInterface
 {
     /**
      * @ORM\Column(type="text")
@@ -25,10 +25,17 @@ class WishOrderItem extends OrderItem implements WishOrderItemInterface
     protected $important;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Demo\CartBundle\Entity\Cart\WishList", inversedBy="items")
-     * @ORM\JoinColumn(name="wishlist_id", referencedColumnName="id")
+     * List to hold the sub items (sub orders fulfilled from the desired quantity)
+     * this is important to know that someone already bought this for you and who is he
+     *
+     *@ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\ListOrderItem")
+     * @ORM\JoinTable(name="wish_sub_items",
+     *      joinColumns={@ORM\JoinColumn(name="wish_item_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="sub_item_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    protected $wishList;
+    protected $subItems;
+
 
 
     /**
@@ -74,10 +81,35 @@ class WishOrderItem extends OrderItem implements WishOrderItemInterface
     /**
      * @inheritDoc
      */
-    public function getWishList()
+    public function addSubItem(ListOrderItem $subItem)
     {
-        return $this->wishList;
+        // TODO: Implement addSubItem() method.
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSubItems()
+    {
+        // TODO: Implement getSubItems() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function remainingCount()
+    {
+        // TODO: Implement remainingCount() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isFulfilled()
+    {
+        // TODO: Implement isFulfilled() method.
+    }
+
 
 
 }

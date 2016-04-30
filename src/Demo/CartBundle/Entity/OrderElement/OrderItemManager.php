@@ -15,7 +15,7 @@ class OrderItemManager extends AbstractOrderItemManager
     /**
      * @inheritDoc
      */
-    public function create(OrderItemInterface $item)
+    public function create(AbstractOrderItem $item)
     {
         $this->em->persist($item);
         $this->em->flush();
@@ -36,7 +36,7 @@ class OrderItemManager extends AbstractOrderItemManager
     /**
      * @inheritDoc
      */
-    public function update(OrderItemInterface $item)
+    public function update(AbstractOrderItem $item)
     {
         $item = $this->em->merge($item);
         $this->em->flush();

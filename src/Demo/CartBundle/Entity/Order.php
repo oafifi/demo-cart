@@ -2,7 +2,7 @@
 
 namespace Demo\CartBundle\Entity;
 
-use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,10 +17,10 @@ class Order extends AbstractOrder
     /**
      * Add itemList
      *
-     * @param OrderItemInterface $itemList
+     * @param AbstractOrderItem $itemList
      * @return Order
      */
-    public function addItemList(OrderItemInterface $itemList)
+    public function addItemList(AbstractOrderItem $itemList)
     {
         $this->itemList[] = $itemList;
 
@@ -30,9 +30,9 @@ class Order extends AbstractOrder
     /**
      * Remove itemList
      *
-     * @param OrderItemInterface $itemList
+     * @param AbstractOrderItem $itemList
      */
-    public function removeItemList(OrderItemInterface $itemList)
+    public function removeItemList(AbstractOrderItem $itemList)
     {
         $this->itemList->removeElement($itemList);
     }

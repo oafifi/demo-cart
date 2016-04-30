@@ -10,7 +10,7 @@ namespace Demo\CartBundle\Entity\Cart;
 
 
 
-use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 
 interface CartInterface
@@ -23,7 +23,7 @@ interface CartInterface
     /**
      * Get an array copy of the cart items to prevent direct manipulation of the original list
      *
-     * @return OrderItemInterface[]
+     * @return AbstractOrderItem[]
      */
     public function getItems();
 
@@ -31,23 +31,23 @@ interface CartInterface
      * Add item to the cart
      *
      * @param AbstractShoppingItem $item
-     * @return OrderItemInterface
+     * @return AbstractOrderItem
      */
     public function addItem(AbstractShoppingItem $item);
 
     /**
      * Remove item from from the cart
      *
-     * @param OrderItemInterface $item
+     * @param AbstractOrderItem $item
      * @return bool
      */
-    public function removeItem(OrderItemInterface $item);
+    public function removeItem(AbstractOrderItem $item);
 
     /**
      * Check if the cart contains this shopping item
      *
      * @param AbstractShoppingItem $item
-     * @return OrderItemInterface
+     * @return AbstractOrderItem
      */
     public function containsItem(AbstractShoppingItem $item);
 

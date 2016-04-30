@@ -2,7 +2,7 @@
 
 namespace Demo\CartBundle\Entity\Cart;
 
-use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItem;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
@@ -164,7 +164,7 @@ class WishList implements WishListInterface
     /**
      * @inheritDoc
      */
-    public function removeItem(OrderItemInterface $item)
+    public function removeItem(AbstractOrderItem $item)
     {
         return $this->items->removeElement($item);
     }
