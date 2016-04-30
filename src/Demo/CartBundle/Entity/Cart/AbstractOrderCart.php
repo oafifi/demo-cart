@@ -1,9 +1,9 @@
 <?php
 
 namespace Demo\CartBundle\Entity\Cart;
+use Demo\CartBundle\Entity\OrderElement\ListItemInterface;
 use Demo\CartBundle\Entity\OrderElement\OrderItem;
 use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
-use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -123,7 +123,7 @@ abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
         $id = $item->getId();
 
         $closure = function(AbstractOrderItem $orderItem) use($id){
-            return (($orderItem->getItem()->getId() == $id) and (!($orderItem instanceof WishOrderItemInterface)));
+            return (($orderItem->getItem()->getId() == $id) and (!($orderItem instanceof ListItemInterface)));
         };
 
         $result = $this->items->filter($closure);

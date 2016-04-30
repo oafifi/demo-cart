@@ -9,7 +9,7 @@
 namespace Demo\CartBundle\Entity\OrderElement;
 
 
-use Demo\CartBundle\Entity\Cart\WishListInterface;
+use Demo\CartBundle\Entity\Cart\AbstractWishList;
 
 interface WishOrderItemInterface extends ListItemInterface
 {
