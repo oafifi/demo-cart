@@ -64,7 +64,7 @@ class CartManager extends AbstractCartManager
     /**
      * @inheritDoc
      */
-    public function update(OrderCartInterface $cart)
+    public function update(AbstractOrderCart $cart)
     {
         $cart = $this->em->merge($cart);
         $this->em->flush();

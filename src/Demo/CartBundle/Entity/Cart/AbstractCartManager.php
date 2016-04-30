@@ -51,7 +51,7 @@ abstract class AbstractCartManager implements CartManagerInterface
     /**
      * @inheritDoc
      */
-    public abstract function update(OrderCartInterface $cart);
+    public abstract function update(AbstractOrderCart $cart);
 
     /**
      * @inheritDoc

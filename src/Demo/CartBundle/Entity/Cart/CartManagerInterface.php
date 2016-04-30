@@ -23,7 +23,7 @@ interface CartManagerInterface
     /**
      * Return the current user cart
      *
-     * @return OrderCartInterface
+     * @return AbstractOrderCart
      */
     public function getUserCart();
 
@@ -33,7 +33,7 @@ interface CartManagerInterface
      * Sticking to the convention that every user has one shopping cart,
      * the cart should be created and assigned to user upon user creation.
      *
-     * @return OrderCartInterface
+     * @return AbstractOrderCart
      */
     public function create();
 
@@ -48,16 +48,16 @@ interface CartManagerInterface
     /**
      * Update the cart
      *
-     * @param OrderCartInterface $cart
-     * @return OrderCartInterface
+     * @param AbstractOrderCart $cart
+     * @return AbstractOrderCart
      */
-    public function update(OrderCartInterface $cart);
+    public function update(AbstractOrderCart $cart);
 
     /**
      * find cart by id
      *
      * @param $id
-     * @return OrderCartInterface
+     * @return AbstractOrderCart
      */
     public function findById($id);
 
@@ -88,7 +88,7 @@ interface CartManagerInterface
     /**
      * Empty the cart, remove all elements
      *
-     * @return OrderCartInterface
+     * @return AbstractOrderCart
      */
     public function emptyCart();
 }
