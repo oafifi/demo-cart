@@ -4,7 +4,7 @@ namespace Demo\CartBundle\Entity\Cart;
 use Demo\CartBundle\Entity\OrderElement\OrderItem;
 use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
-use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
+use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -82,7 +82,7 @@ abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
     /**
      * @inheritDoc
      */
-    public function addItem(ShoppingItemInterface $item)
+    public function addItem(AbstractShoppingItem $item)
     {
         $foundItem = $this->containsItem($item);
 
@@ -118,7 +118,7 @@ abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
      * to edit it or whatever it is needed in.
      *
      */
-    public function containsItem(ShoppingItemInterface $item)
+    public function containsItem(AbstractShoppingItem $item)
     {
         $id = $item->getId();
 

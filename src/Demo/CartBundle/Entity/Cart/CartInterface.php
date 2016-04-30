@@ -11,7 +11,7 @@ namespace Demo\CartBundle\Entity\Cart;
 
 
 use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
-use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
+use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 
 interface CartInterface
 {
@@ -30,10 +30,10 @@ interface CartInterface
     /**
      * Add item to the cart
      *
-     * @param ShoppingItemInterface $item
+     * @param AbstractShoppingItem $item
      * @return OrderItemInterface
      */
-    public function addItem(ShoppingItemInterface $item);
+    public function addItem(AbstractShoppingItem $item);
 
     /**
      * Remove item from from the cart
@@ -46,10 +46,10 @@ interface CartInterface
     /**
      * Check if the cart contains this shopping item
      *
-     * @param ShoppingItemInterface $item
+     * @param AbstractShoppingItem $item
      * @return OrderItemInterface
      */
-    public function containsItem(ShoppingItemInterface $item);
+    public function containsItem(AbstractShoppingItem $item);
 
     /**
      * Remove all items in the cart

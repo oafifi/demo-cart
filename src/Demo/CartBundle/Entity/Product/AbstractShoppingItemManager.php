@@ -31,7 +31,7 @@ abstract class AbstractShoppingItemManager implements ShoppingItemManagerInterfa
     /**
      * @inheritDoc
      */
-    public abstract function create(ShoppingItemInterface $item);
+    public abstract function create(AbstractShoppingItem $item);
 
     /**
      * @inheritDoc
@@ -41,7 +41,7 @@ abstract class AbstractShoppingItemManager implements ShoppingItemManagerInterfa
     /**
      * @inheritDoc
      */
-    public abstract function update(ShoppingItemInterface $item);
+    public abstract function update(AbstractShoppingItem $item);
 
     /**
      * @inheritDoc

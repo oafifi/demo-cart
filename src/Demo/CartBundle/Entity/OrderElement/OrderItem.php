@@ -2,7 +2,7 @@
 
 namespace Demo\CartBundle\Entity\OrderElement;
 
-use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
+use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,7 +45,7 @@ class OrderItem implements OrderItemInterface
     }
 
     /**
-     * @return ShoppingItemInterface
+     * @return AbstractShoppingItem
      */
     public function getItem()
     {
@@ -55,7 +55,7 @@ class OrderItem implements OrderItemInterface
     /**
      * @param mixed $item
      */
-    public function setItem(ShoppingItemInterface $item)
+    public function setItem(AbstractShoppingItem $item)
     {
         $this->item = $item;
     }

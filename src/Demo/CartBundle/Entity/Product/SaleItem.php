@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  */
-class SaleItem extends ShoppingItem implements SaleItemInterface
+class SaleItem extends ShoppingItem implements SaleInterface
 {
     /**
      * discount in percentage

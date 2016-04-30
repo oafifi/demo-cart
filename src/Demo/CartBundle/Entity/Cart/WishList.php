@@ -5,7 +5,7 @@ namespace Demo\CartBundle\Entity\Cart;
 use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItem;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
-use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
+use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -153,7 +153,7 @@ class WishList implements WishListInterface
     /**
      * @inheritDoc
      */
-    public function addItem(ShoppingItemInterface $item)
+    public function addItem(AbstractShoppingItem $item)
     {
         $wishItem = new WishOrderItem();
         $wishItem->setItem($item);
@@ -172,7 +172,7 @@ class WishList implements WishListInterface
     /**
      * @inheritDoc
      */
-    public function containsItem(ShoppingItemInterface $item)
+    public function containsItem(AbstractShoppingItem $item)
     {
         $id = $item->getId();
 

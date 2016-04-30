@@ -9,7 +9,7 @@
 namespace Demo\CartBundle\Entity\Product;
 
 
-interface SaleItemInterface
+interface SaleInterface
 {
     /**
      * Set discount in percentage

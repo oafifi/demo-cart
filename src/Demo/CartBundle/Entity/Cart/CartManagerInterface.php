@@ -9,7 +9,7 @@
 namespace Demo\CartBundle\Entity\Cart;
 use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
-use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
+use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 
 /**
  * Interface CartManagerInterface
@@ -64,10 +64,10 @@ interface CartManagerInterface
     /**
      * Add shopping item to the cart
      *
-     * @param ShoppingItemInterface $item
+     * @param AbstractShoppingItem $item
      * @return OrderItemInterface
      */
-    public function addShoppingItem(ShoppingItemInterface $item);
+    public function addShoppingItem(AbstractShoppingItem $item);
 
     /**
      * Add wish list item to the cart

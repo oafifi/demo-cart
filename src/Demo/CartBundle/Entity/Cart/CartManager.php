@@ -11,7 +11,7 @@ namespace Demo\CartBundle\Entity\Cart;
 use Demo\CartBundle\Entity\OrderElement\OrderItem;
 use Demo\CartBundle\Entity\OrderElement\OrderItemInterface;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
-use Demo\CartBundle\Entity\Product\ShoppingItemInterface;
+use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
@@ -84,7 +84,7 @@ class CartManager extends AbstractCartManager
     /**
      * @inheritDoc
      */
-    public function addShoppingItem(ShoppingItemInterface $item)
+    public function addShoppingItem(AbstractShoppingItem $item)
     {
         /*
          * Here should be logic to get user cart (assuming that every user is assigned one cart)

@@ -22,7 +22,7 @@ class ShoppingItemManager extends AbstractShoppingItemManager
     /**
      * @inheritDoc
      */
-    public function create(ShoppingItemInterface $item)
+    public function create(AbstractShoppingItem $item)
     {
         $this->em->persist($item);
         $this->em->flush();
@@ -43,7 +43,7 @@ class ShoppingItemManager extends AbstractShoppingItemManager
     /**
      * @inheritDoc
      */
-    public function update(ShoppingItemInterface $item)
+    public function update(AbstractShoppingItem $item)
     {
         $item = $this->em->merge($item);
         $this->em->flush();
