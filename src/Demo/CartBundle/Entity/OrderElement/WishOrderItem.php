@@ -2,6 +2,7 @@
 
 namespace Demo\CartBundle\Entity\OrderElement;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,8 +15,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WishOrderItem extends ListOrderItem implements WishOrderItemInterface
 {
+
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $comment;
 
@@ -36,6 +38,16 @@ class WishOrderItem extends ListOrderItem implements WishOrderItemInterface
      */
     protected $subItems;
 
+    /**
+     * WishOrderItem constructor.
+     * @internal param $important
+     * @internal param $subItems
+     */
+    public function __construct()
+    {
+        $this->important = false;
+        $this->subItems = new ArrayCollection();
+    }
 
 
     /**

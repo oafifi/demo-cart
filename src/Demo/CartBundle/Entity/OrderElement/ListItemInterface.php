@@ -9,7 +9,11 @@
 namespace Demo\CartBundle\Entity\OrderElement;
 
 
+use Demo\CartBundle\Entity\Cart\AbstractWishList;
+
 interface ListItemInterface
 {
     public function getList();
+
+    public function setList(AbstractWishList $list);
 }

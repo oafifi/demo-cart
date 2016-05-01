@@ -8,6 +8,7 @@
 
 namespace Demo\CartBundle\Entity\OrderElement;
 
+use Demo\CartBundle\Entity\Cart\AbstractWishList;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,5 +31,10 @@ class ListOrderItem extends OrderItem implements ListItemInterface
     public function getList()
     {
         return $this->list;
+    }
+
+    public function setList(AbstractWishList $list)
+    {
+        $this->list = $list;
     }
 }
