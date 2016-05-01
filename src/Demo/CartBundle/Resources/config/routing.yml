@@ -54,3 +54,41 @@ demo_cart_cart_add_item:
 demo_cart_cart_remove_item:
     path:     /cart/remove/item
     defaults: { _controller: DemoCartBundle:Cart:remove }
+
+#wish list routes
+
+demo_cart_list_view:
+    path:     /list/{id}
+    defaults: { _controller: DemoCartBundle:List:view }
+    requirements:
+            id: \d+
+
+demo_cart_list_list:
+    path:     /list/
+    defaults: { _controller: DemoCartBundle:List:list }
+
+demo_cart_list_create:
+    path:     /list/create
+    defaults: { _controller: DemoCartBundle:List:create }
+
+demo_cart_list_remove:
+    path:     /list/remove
+    defaults: { _controller: DemoCartBundle:List:remove }
+
+demo_cart_list_edit:
+    path:     /list/edit/{id}
+    defaults: { _controller: DemoCartBundle:List:update, id: 0 }
+    requirements:
+        id: \d+
+
+demo_cart_list_empty:    #get method for testing
+    path:     /list/empty
+    defaults: { _controller: DemoCartBundle:List:empty }
+
+demo_cart_list_add_item:
+    path:     /list/add/item
+    defaults: { _controller: DemoCartBundle:List:addItem }
+
+demo_cart_list_remove_item:
+    path:     /list/remove/item
+    defaults: { _controller: DemoCartBundle:List:removeItem }

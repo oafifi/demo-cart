@@ -8,9 +8,10 @@ services:
         class: Demo\CartBundle\Entity\Cart\CartManager
         arguments: ["@doctrine.orm.entity_manager","DemoCartBundle:Cart\OrderCart"]
 
-    demo_cart.wish_list_manager:
-            class: Demo\CartBundle\Entity\Cart\WishListManager
-            arguments: ["@doctrine.orm.entity_manager"]
+    demo_cart.list_manager:
+            class: Demo\CartBundle\Entity\Cart\ListManager
+            arguments: ["@doctrine.orm.entity_manager","DemoCartBundle:Cart\WishList"]
+
 
     demo_cart.shopping_item_manager:
             class: Demo\CartBundle\Entity\Product\ShoppingItemManager
