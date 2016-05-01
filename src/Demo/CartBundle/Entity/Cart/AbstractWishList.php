@@ -14,6 +14,7 @@ use Demo\CartBundle\Entity\OrderElement\WishOrderItem;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Proxies\__CG__\Demo\CartBundle\Entity\Cart\WishList;
 
 /**
  * Class AbstractWishList
@@ -33,7 +34,7 @@ class AbstractWishList implements CartInterface
     /**
      * List to hold the cart items
      *
-     * @ORM\OneToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\ListOrderItem", mappedBy="list")
+     * @ORM\OneToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\WishOrderItem", mappedBy="list", orphanRemoval=true)
      */
     protected $items;
 
@@ -158,10 +159,23 @@ class AbstractWishList implements CartInterface
      */
     public function addItem(AbstractShoppingItem $item)
     {
+        $foundItem = $this->containsItem($item);
+
+        if($foundItem){
+            $oldQuantity = $foundItem->getQuantity();
+            $foundItem->setQuantity($oldQuantity+1);
+
+            return $foundItem;
+        }
+
         $wishItem = new WishOrderItem();
         $wishItem->setItem($item);
+        $wishItem->setQuantity(1);
+        $wishItem->setList($this);
 
         $this->items[]= $wishItem;
+
+        return $wishItem;
     }
 
     /**
