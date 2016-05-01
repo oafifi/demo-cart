@@ -4,24 +4,35 @@
 {% block body %}
 
 <ul>
-    <a href="{{ path('demo_cart_cart_view') }}">
-        <li>Cart</li>
-    </a>
-    <a href="{{ path('demo_cart_list_list') }}">
-        <li>Show all wish lists</li>
-    </a>
-    <a href="{{ path('demo_cart_list_create') }}">
-        <li>Create wish list</li>
-    </a>
-    <a href="{{ path('demo_cart_product_list') }}">
-        <li>Show all products</li>
-    </a>
-    <a href="{{ path('demo_cart_product_create', {'type': 'shopping-item'}) }}">
-        <li>Create new normal product</li>
-    </a>
-    <a href="{{ path('demo_cart_product_create', {'type': 'sale-item'}) }}">
-        <li>Create new sale product</li>
-    </a>
+    <li>
+        <a href="{{ path('demo_cart_cart_view') }}">
+            Cart
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('demo_cart_list_list') }}">
+            Show all wish lists
+        </a>
+    <li>
+        <a href="{{ path('demo_cart_list_create') }}">
+            Create wish list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('demo_cart_product_list') }}">
+            Show all products
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('demo_cart_product_create', {'type': 'shopping-item'}) }}">
+            Create new normal product
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('demo_cart_product_create', {'type': 'sale-item'}) }}">
+            Create new sale product
+        </a>
+    </li>
 </ul>
 
     <h4>
