@@ -11,6 +11,7 @@ namespace Demo\CartBundle\Controller;
 use Demo\CartBundle\Entity\Product\SaleItem;
 use Demo\CartBundle\Entity\Product\ShoppingItem;
 use Demo\CartBundle\Form\Type\AddToCartType;
+use Demo\CartBundle\Form\Type\AddToListType;
 use Demo\CartBundle\Form\Type\SaleItemType;
 use Symfony\Component\HttpFoundation\Request;
 use Demo\CartBundle\Form\Type\ShoppingItemType;
@@ -50,6 +51,7 @@ class ProductController extends Controller
     public function listAllAction() //For testing only, not logic to get all elements
     {
         $pm = $this->get("demo_cart.shopping_item_manager");
+        $lm = $this->get("demo_cart.list_manager");
 
         $items = $pm->findAll();
 
@@ -61,6 +63,18 @@ class ProductController extends Controller
             ));
 
             $item->form = $form->createView();
+        }
+
+        //Add the add to list form, can ve injected as a service also
+        $userLists = $lm->getUserLists();
+        foreach($items as $item) {
+            $form = $this->createForm(AddToListType::class, null, array(
+                'action' => $this->generateUrl('demo_cart_list_add_item'),
+                'method' => 'POST',
+                'lists' => $userLists,
+            ));
+
+            $item->listForm = $form->createView();
         }
 
         return $this->render('DemoCartBundle:Product:list.html.twig', array(
