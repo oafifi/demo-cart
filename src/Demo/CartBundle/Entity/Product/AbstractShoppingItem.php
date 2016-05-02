@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class AbstractShoppingItem
  * @package Demo\CartBundle\Entity
  *
- * Interface for Shopping items
+ * Base class for Shopping items
  *
  * @ORM\MappedSuperclass
  */

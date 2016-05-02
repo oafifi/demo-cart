@@ -8,7 +8,12 @@
 
 namespace Demo\CartBundle\Entity\Product;
 
-
+/**
+ * Interface SaleInterface
+ * @package Demo\CartBundle\Entity\Product
+ *
+ * provides interface for any item that is on sale
+ */
 interface SaleInterface
 {
     /**
