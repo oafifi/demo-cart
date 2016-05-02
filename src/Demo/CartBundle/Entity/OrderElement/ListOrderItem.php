@@ -16,6 +16,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @package Demo\CartBundle\Entity\OrderElement
  *
  * @ORM\Entity
+ *
+ * order item that shows the wish list it belongs to
  */
 class ListOrderItem extends OrderItem implements ListItemInterface
 {

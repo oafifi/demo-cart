@@ -10,7 +10,7 @@ namespace Demo\CartBundle\Entity\Cart;
 
 
 use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
-use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\DetailedWishItemInterface;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -66,7 +66,7 @@ abstract class AbstractCartManager implements CartManagerInterface
     /**
      * @inheritDoc
      */
-    public abstract function addWishOrderItem(WishOrderItemInterface $item);
+    public abstract function addWishOrderItem(DetailedWishItemInterface $item);
 
     /**
      * @inheritDoc

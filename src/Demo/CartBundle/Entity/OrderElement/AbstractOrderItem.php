@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @package Demo\CartBundle\Entity
  *
  * Interface for order items (items to be ordered)
+ * order items are holders for shopping items (wrappers) that provides information about the order of this shopping
+ * item (quantity .. etc)
  *
  * @ORM\MappedSuperclass
  */

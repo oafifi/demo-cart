@@ -9,7 +9,7 @@
 namespace Demo\CartBundle\Controller;
 
 
-use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
+use Demo\CartBundle\Entity\OrderElement\DetailedWishItemInterface;
 use Demo\CartBundle\Form\Type\OrderItemType;
 use Demo\CartBundle\Form\Type\WishOrderItemType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,7 +29,7 @@ class OrderItemController extends Controller
             throw $this->createNotFoundException('The order item is not found');
         }
 
-        if($orderItem instanceof WishOrderItemInterface) {
+        if($orderItem instanceof DetailedWishItemInterface) {
             $formType = WishOrderItemType::class;
         }
         else{
