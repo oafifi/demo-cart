@@ -21,9 +21,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 abstract class AbstractListManager implements ListManagerInterface
 {
     protected $em;
+    protected $repo;
 
-    function __construct(ObjectManager $em)
+    function __construct(ObjectManager $em,$repository)
     {
         $this->em = $em;
+        $this->repo = $repository;
     }
 }

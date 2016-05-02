@@ -12,25 +12,9 @@ namespace Demo\CartBundle\Entity\Cart;
 use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
-use Doctrine\Common\Persistence\ObjectManager;
 
 class ListManager extends AbstractListManager
 {
-    protected $repo;
-
-    /**
-     * ListManager constructor.
-     * @param ObjectManager $entityManager
-     * @param $repo
-     */
-    public function __construct(ObjectManager $entityManager,$repo)
-    {
-        parent::__construct($entityManager);
-
-        $this->repo = $repo;
-    }
-
-
     /**
      * Create new list
      *
