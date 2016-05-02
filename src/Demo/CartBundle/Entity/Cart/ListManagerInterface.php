@@ -10,7 +10,7 @@ namespace Demo\CartBundle\Entity\Cart;
 
 
 use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
-use Demo\CartBundle\Entity\OrderElement\DetailedWishItemInterface;
+use Demo\CartBundle\Entity\OrderElement\AbstractWishOrderItem;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 
 /**
@@ -78,10 +78,10 @@ interface ListManagerInterface
     /**
      * Add wish list item to the list
      *
-     * @param DetailedWishItemInterface $item
+     * @param AbstractWishOrderItem $item
      * @return mixed
      */
-    public function addWishOrderItem(DetailedWishItemInterface $item);
+    public function addWishOrderItem(AbstractWishOrderItem $item);
 
     /**
      * remove item from the list
