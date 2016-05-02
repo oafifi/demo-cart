@@ -1,7 +1,9 @@
 <?php
 
 namespace Demo\CartBundle\Entity\Cart;
+use Demo\CartBundle\Entity\OrderElement\AbstractWishOrderItem;
 use Demo\CartBundle\Entity\OrderElement\ListItemInterface;
+use Demo\CartBundle\Entity\OrderElement\ListOrderItem;
 use Demo\CartBundle\Entity\OrderElement\OrderItem;
 use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
@@ -112,6 +114,26 @@ abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
         return $orderItem;
     }
 
+    public function addWishItem(AbstractWishOrderItem $item)
+    {
+        $foundItem = $this->containsListItem($item);
+
+        if($foundItem){
+            $oldQuantity = $foundItem->getQuantity();
+            $foundItem->setQuantity($oldQuantity+1);
+
+            return $foundItem;
+        }
+        $orderItem = new ListOrderItem();
+        $orderItem->setItem($item);
+        $orderItem->setQuantity(1);
+        $orderItem->setList($item->getList());
+
+        $this->items[] = $orderItem;
+
+        return $orderItem;
+    }
+
     /**
      * @inheritDoc
      */
@@ -135,6 +157,33 @@ abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
 
         $closure = function(AbstractOrderItem $orderItem) use($id){
             return (($orderItem->getItem()->getId() == $id) and (!($orderItem instanceof ListItemInterface)));
+        };
+
+        $result = $this->items->filter($closure);
+
+        if($result->isEmpty()) {
+            return null;
+        }
+
+        return $result->first();
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * The order cart can hold a max of one order item of a certain product, but many of wish-list order items
+     * of the same shopping item if they are from different wish-lists.
+     * This method checks if this shopping item is added as order item or not, if found, it will return the order item
+     * to edit it or whatever it is needed in.
+     *
+     */
+    public function containsListItem(AbstractWishOrderItem $item)
+    {
+        $id = $item->getItem()->getId();
+        $listId = $item->getList()->getId();
+
+        $closure = function(AbstractOrderItem $orderItem) use($id,$listId){
+            return (($orderItem instanceof ListItemInterface) and ($orderItem->getItem()->getId() == $id) and ($orderItem->getList()->getId() == $listId));
         };
 
         $result = $this->items->filter($closure);
