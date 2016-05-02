@@ -21,6 +21,15 @@ use Proxies\__CG__\Demo\CartBundle\Entity\Cart\WishList;
  * @package Demo\CartBundle\Entity\Cart
  *
  * @ORM\MappedSuperclass
+ *
+ * The base for Wish List cart type, it defines main logic that a wish list must implement.
+ * The wish lists: holds shopping items that the user wish to buy, and info about the quantity he wish, comments, and
+ * urgency of these items, every user can create many lists, it doesn't have checkout capability though you can programmaticaly
+ * create lists with checkout capability easily by extending this class and implementing checkout interface.
+ *
+ * The wish list stores its shopping items as a wish list order item type that can have a comment and urgency indicator,
+ * and doesn't allow more than one order item of the same shopping item, you can increase the quantity of the item as
+ * you wish but never replicate it.
  */
 class AbstractWishList implements CartInterface
 {

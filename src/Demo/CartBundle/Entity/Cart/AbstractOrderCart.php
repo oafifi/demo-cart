@@ -12,9 +12,20 @@ use Doctrine\ORM\Mapping as ORM;
  * Interface AbstractOrderCart
  * @package Demo\CartBundle\Entity
  *
- * Defines a cart that can do checkout and create order from its order items
- *
  * @ORM\MappedSuperclass
+ *
+ * Defines a cart that can calculate the subtotal value of it's items, and do checkout and create order from its order items
+ *
+ * The order cart: holds shopping items that the user is going to buy, and info about the quantity to be bought, every
+ * user has one order cart only, it has the checkout capability to create the order of those items.
+ *
+ * The order cart stores the shopping item as:
+ * 1-normal order item: this can't be replicated for the same shopping item, just increase the quantity wanted.
+ * 2-list order item: this type of order items is an order item from a wish list, it creates a child list order item
+ * for items of wish lists (wish list order items), this allows informing the owner of the wish list item that, someone
+ * is going to order the quantity specified in the child item from the original quantity wanted in the wish list item
+ * (Amazon's like), the list order item can't be replicated for the same shopping item and the same list.
+ *
  */
 abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
 {
