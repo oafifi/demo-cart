@@ -15,6 +15,11 @@ namespace Demo\CartBundle\Entity\Product;
  *
  * Interface for shopping item (product) management
  * Provides data access layer
+ * Acts as an abstraction layer between controller and data model, hides details and type of persistance.
+ *
+ * Every entity type has its own manager to provide easier maintainance and separation of concerns, this also leads
+ * to ease in adopting and implementing scailability solutions. (If we decided to migrate to another database
+ * for this specific entity for example).
  */
 interface ShoppingItemManagerInterface
 {

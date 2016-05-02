@@ -13,6 +13,18 @@ use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Demo\CartBundle\Entity\OrderElement\WishOrderItemInterface;
 use Demo\CartBundle\Entity\Product\AbstractShoppingItem;
 
+/**
+ * Interface ListManagerInterface
+ * @package Demo\CartBundle\Entity\Cart
+ *
+ * Interface for wish list type management
+ * Provides data access layer
+ * Acts as an abstraction layer between controller and data model, hides details and type of persistance.
+ *
+ * Every entity type has its own manager to provide easier maintainance and separation of concerns, this also leads
+ * to ease in adopting and implementing scailability solutions. (If we decided to migrate to another database
+ * for this specific entity for example).
+ */
 interface ListManagerInterface
 {
 
