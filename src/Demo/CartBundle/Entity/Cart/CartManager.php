@@ -111,7 +111,26 @@ class CartManager extends AbstractCartManager
      */
     public function addWishOrderItem(AbstractWishOrderItem $item)
     {
-        // TODO: Implement addWishOrderItem() method.
+        /*
+         * Here should be logic to get user cart (assuming that every user is assigned one cart)
+         * I will get cart with id = 1 for testing purpose
+         */
+
+        $cart = $this->getUserCart();
+
+        $orderItem = $cart->addWishItem($item);
+
+        if($orderItem) {
+            if ($orderItem->getId()) {
+                $this->em->merge($orderItem);
+            } else {
+                $this->em->persist($orderItem);
+            }
+
+            $this->em->flush();
+            return $orderItem;
+        }
+        return null;
     }
 
     /**

@@ -28,10 +28,10 @@ class AbstractWishOrderItem extends ListOrderItem
      * List to hold the sub items (sub orders fulfilled from the desired quantity)
      * this is important to know that someone already bought this for you and who is he
      *
-     *@ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\ListOrderItem")
+     *@ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\ListOrderItem", orphanRemoval=true)
      * @ORM\JoinTable(name="wish_sub_items",
      *      joinColumns={@ORM\JoinColumn(name="wish_item_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="sub_item_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="sub_item_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
      *      )
      */
     protected $subItems;

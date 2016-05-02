@@ -24,7 +24,7 @@ class WishOrderItemType extends AbstractType
         $builder
             ->add('quantity', IntegerType::class)
             ->add('comment', TextareaType::class)
-            ->add('High priority', CheckboxType::class, array(
+            ->add('important', CheckboxType::class, array(
                 "required"=>false
             ))
             ->add('update', SubmitType::class)

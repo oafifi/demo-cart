@@ -125,10 +125,10 @@ abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
             return $foundItem;
         }
         $orderItem = new ListOrderItem();
-        $orderItem->setItem($item);
+        $orderItem->setItem($item->getItem());
         $orderItem->setQuantity(1);
         $orderItem->setList($item->getList());
-
+        $orderItem = $item->addSubItem($orderItem);
         $this->items[] = $orderItem;
 
         return $orderItem;

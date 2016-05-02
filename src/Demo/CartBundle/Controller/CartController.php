@@ -71,7 +71,7 @@ class CartController extends Controller
         return $this->redirectToRoute("demo_cart_cart_view");
     }
 
-    public function addAction(Request $request)
+    public function addAction(Request $request, $type)
     {
 
         $form = $this->createForm(AddToCartType::class);    //could be created as a service
@@ -92,9 +92,15 @@ class CartController extends Controller
         //$arr = $request->request->get("form");
         //$id=$arr["id"];
 
-
-        $item = $this->get("demo_cart.shopping_item_manager")->findById($id);
-        $orderItem = $this->get("demo_cart.cart_manager")->addShoppingItem($item);
+        if(strcmp($type,'order-item') === 0)
+        {
+            $item = $this->get("demo_cart.order_item_manager")->findById($id);
+            $orderItem = $this->get("demo_cart.cart_manager")->addWishOrderItem($item);
+        }
+        else {
+            $item = $this->get("demo_cart.shopping_item_manager")->findById($id);
+            $orderItem = $this->get("demo_cart.cart_manager")->addShoppingItem($item);
+        }
 
         if(!$orderItem){
             return $this->redirectToRoute("demo_cart_cart_view", array(

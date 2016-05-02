@@ -10,6 +10,7 @@ namespace Demo\CartBundle\Controller;
 
 
 use Demo\CartBundle\Entity\Cart\WishList;
+use Demo\CartBundle\Form\Type\AddToCartType;
 use Demo\CartBundle\Form\Type\AddToListType;
 use Demo\CartBundle\Form\Type\EditCartItemType;
 use Demo\CartBundle\Form\Type\EmptyCartType;
@@ -51,13 +52,13 @@ class ListController extends Controller
                 'method' => 'POST',
             ));
 
-            $editForm = $this->createForm(EditCartItemType::class, null, array(
-                'action' => $this->generateUrl('demo_cart_orderitem_edit'),
+            $cartForm = $this->createForm(AddToCartType::class, null, array(
+                'action' => $this->generateUrl('demo_cart_cart_add_item', array("type" => "order-item")),
                 'method' => 'POST',
             ));
 
             $item->removeForm = $removeForm->createView();
-            $item->editForm = $editForm->createView();
+            $item->cartForm = $cartForm->createView();
         }
 
         return $this->render('DemoCartBundle:List:view.html.twig', array(

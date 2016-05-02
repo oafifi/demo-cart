@@ -48,8 +48,10 @@ demo_cart_cart_empty:    #get method for testing
     defaults: { _controller: DemoCartBundle:Cart:empty }
 
 demo_cart_cart_add_item:
-    path:     /cart/add/item
-    defaults: { _controller: DemoCartBundle:Cart:add }
+    path:     /cart/add/item/{type}
+    defaults: { _controller: DemoCartBundle:Cart:add, type: shopping-item }
+    requirements:
+            type: shopping-item|order-item
 
 demo_cart_cart_remove_item:
     path:     /cart/remove/item
