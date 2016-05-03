@@ -2,13 +2,18 @@ demo_cart_homepage:
     path:     /
     defaults: { _controller: DemoCartBundle:Default:index }
 
+#Note: Some routes are for testing and debuging purpose and it is not logically useful in real application
+
+
+#product routes
+
 demo_cart_product_create:
     path:     /product/create/{type}
     defaults: { _controller: DemoCartBundle:Product:create, type: shopping-item }
     requirements:
         type: shopping-item|sale-item
 
-demo_cart_product_showall:
+demo_cart_product_list:
     path:     /product/list
     defaults: { _controller: DemoCartBundle:Product:listAll }
 
@@ -16,4 +21,76 @@ demo_cart_product_view:
     path:     /product/{id}
     defaults: { _controller: DemoCartBundle:Product:view }
     requirements:
-            type: \d+
+        id: \d+
+
+#order item routes
+
+demo_cart_orderitem_edit:
+    path:     /order-item/edit/{id}
+    defaults: { _controller: DemoCartBundle:OrderItem:update, id: 0 }
+    requirements:
+        id: \d+
+
+demo_cart_orderitem_view:
+    path:     /order-item/{id}
+    defaults: { _controller: DemoCartBundle:OrderItem:view }
+    requirements:
+        id: \d+
+
+#order cart routes
+
+demo_cart_cart_view:
+    path:     /cart
+    defaults: { _controller: DemoCartBundle:Cart:view }
+
+demo_cart_cart_empty:    #get method for testing
+    path:     /cart/empty
+    defaults: { _controller: DemoCartBundle:Cart:empty }
+
+demo_cart_cart_add_item:
+    path:     /cart/add/item/{type}
+    defaults: { _controller: DemoCartBundle:Cart:add, type: shopping-item }
+    requirements:
+            type: shopping-item|order-item
+
+demo_cart_cart_remove_item:
+    path:     /cart/remove/item
+    defaults: { _controller: DemoCartBundle:Cart:remove }
+
+#wish list routes
+
+demo_cart_list_view:
+    path:     /list/{id}
+    defaults: { _controller: DemoCartBundle:List:view }
+    requirements:
+            id: \d+
+
+demo_cart_list_list:
+    path:     /list/
+    defaults: { _controller: DemoCartBundle:List:list }
+
+demo_cart_list_create:
+    path:     /list/create
+    defaults: { _controller: DemoCartBundle:List:create }
+
+demo_cart_list_remove:
+    path:     /list/remove
+    defaults: { _controller: DemoCartBundle:List:remove }
+
+demo_cart_list_edit:
+    path:     /list/edit/{id}
+    defaults: { _controller: DemoCartBundle:List:update, id: 0 }
+    requirements:
+        id: \d+
+
+demo_cart_list_empty:    #get method for testing
+    path:     /list/empty
+    defaults: { _controller: DemoCartBundle:List:empty }
+
+demo_cart_list_add_item:
+    path:     /list/add/item
+    defaults: { _controller: DemoCartBundle:List:addItem }
+
+demo_cart_list_remove_item:
+    path:     /list/remove/item
+    defaults: { _controller: DemoCartBundle:List:removeItem }

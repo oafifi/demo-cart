@@ -1,0 +1,15 @@
+{% extends 'DemoCartBundle:Default:base.html.twig' %}
+
+{% block body %}
+
+<div>
+    <ul>
+        <li>Name:    {{ item.item.name }}</li>
+        <li>price:    {{ item.item.price }}</li>
+        <li>description:    {{ item.item.description }}</li>
+        <li>inStock:    {{ item.item.inStock }}</li>
+        <li>Quantity:    {{ item.quantity }}</li>
+    </ul>
+</div>
+
+{% endblock %}

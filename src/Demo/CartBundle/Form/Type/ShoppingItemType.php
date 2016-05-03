@@ -18,7 +18,7 @@ class ShoppingItemType extends AbstractType
     {
         $builder
             ->add('ShoppingItem', BaseShoppingItemType::class, array(
-                'data_class' => 'Demo\CartBundle\Entity\ShoppingItem'
+                'data_class' => 'Demo\CartBundle\Entity\Product\ShoppingItem'
             ))
         ;
     }

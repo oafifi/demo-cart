@@ -1,0 +1,25 @@
+{% extends 'DemoCartBundle:Default:base.html.twig' %}
+
+{% block body %}
+
+    {% for list in lists %}
+        <div>
+            <ul>
+                <a href="{{ path('demo_cart_list_view', {'id': list.id}) }}">
+                    <li>Name:    {{ list.name }}</li>
+                </a>
+                <li>description:    {{ list.description }}</li>
+                <li>count:    {{ list.count }}</li>
+                <li>public:    {{ list.public }}</li>
+            </ul>
+            <a href="{{ path('demo_cart_list_edit', {'id': list.id}) }}">Edit</a>
+            {{ form_start(list.removeForm) }}
+            {{ form_errors(list.removeForm) }}
+            {{ form_row(list.removeForm.cart_id, {'attr': {'value': list.id}}) }}
+            {{ form_end(list.removeForm) }}
+
+        </div>
+        <br>
+    {% endfor %}
+
+{% endblock %}

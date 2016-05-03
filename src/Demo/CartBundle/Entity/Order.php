@@ -2,6 +2,7 @@
 
 namespace Demo\CartBundle\Entity;
 
+use Demo\CartBundle\Entity\OrderElement\AbstractOrderItem;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,52 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  */
-class Order extends AbstractOrder implements EntityDataAccessInterface
+class Order extends AbstractOrder
 {
-    /**
-     * @inheritDoc
-     */
-    public function save()
-    {
-        // TODO: Implement save() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function remove()
-    {
-        // TODO: Implement remove() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function update()
-    {
-        // TODO: Implement update() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public static function find($id)
-    {
-        // TODO: Implement find() method.
-    }
-
-
-
-
-
 
     /**
      * Add itemList
      *
-     * @param \Demo\CartBundle\Entity\OrderItem $itemList
+     * @param AbstractOrderItem $itemList
      * @return Order
      */
-    public function addItemList(\Demo\CartBundle\Entity\OrderItem $itemList)
+    public function addItemList(AbstractOrderItem $itemList)
     {
         $this->itemList[] = $itemList;
 
@@ -65,9 +30,9 @@ class Order extends AbstractOrder implements EntityDataAccessInterface
     /**
      * Remove itemList
      *
-     * @param \Demo\CartBundle\Entity\OrderItem $itemList
+     * @param AbstractOrderItem $itemList
      */
-    public function removeItemList(\Demo\CartBundle\Entity\OrderItem $itemList)
+    public function removeItemList(AbstractOrderItem $itemList)
     {
         $this->itemList->removeElement($itemList);
     }

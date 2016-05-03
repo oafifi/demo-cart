@@ -1,1 +1,53 @@
-Hello World!
+
+{% extends 'DemoCartBundle:Default:base.html.twig' %}
+
+{% block body %}
+
+<ul>
+    <li>
+        <a href="{{ path('demo_cart_cart_view') }}">
+            Cart
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('demo_cart_list_list') }}">
+            Show all wish lists
+        </a>
+    <li>
+        <a href="{{ path('demo_cart_list_create') }}">
+            Create wish list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('demo_cart_product_list') }}">
+            Show all products
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('demo_cart_product_create', {'type': 'shopping-item'}) }}">
+            Create new normal product
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('demo_cart_product_create', {'type': 'sale-item'}) }}">
+            Create new sale product
+        </a>
+    </li>
+</ul>
+
+    <h4>
+        Note:<br><br>
+        Please note that this is a testing interface and many functions provided here will have different workflow (on interface or user interaction level)
+        in a real application.<br>
+        e.g. creating product will not be two links, it will be one with the option to choose the type to create<br><br>
+        The interfaces are dummy and not well organised (form rendering for example).<br><br>
+        This demo assumes the user cart is the cart with id = 1, at its first run it will detect the cart and create the first one if not created yet.
+        <br><br>
+        For any unexpected behavior, please contact me to clarify.
+        <br><br>
+        Thank you<br>
+        Omar Afifi
+    </h4>
+
+
+{% endblock %}

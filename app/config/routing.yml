@@ -1,6 +1,6 @@
 demo_cart:
     resource: "@DemoCartBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /demo
 
 app:
     resource: "@AppBundle/Controller/"
