@@ -153,7 +153,7 @@ class ListController extends Controller
 
         $id = null;
         $list = null;
-        //file_put_contents("/log.txt",$form->getData());
+
         if ($form->isSubmitted() && $form->isValid()) {
             $id = $form->getData()['product_id'];
             $list = $form->getData()['list'];
@@ -194,7 +194,7 @@ class ListController extends Controller
             $response = new Response('Bad request', Response::HTTP_BAD_REQUEST);    //just dummy response for this demo
             $response->send();
         }
-        file_put_contents("log.txt",$listId);
+
         $this->get("demo_cart.list_manager")->emptyCart($listId);
 
 
