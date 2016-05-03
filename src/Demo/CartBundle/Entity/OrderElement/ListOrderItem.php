@@ -23,7 +23,7 @@ class ListOrderItem extends OrderItem implements ListItemInterface
 {
     /**
      * @ORM\ManyToOne(targetEntity="Demo\CartBundle\Entity\Cart\WishList", inversedBy="items")
-     * @ORM\JoinColumn(name="wishlist_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="wishlist_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $list;
 

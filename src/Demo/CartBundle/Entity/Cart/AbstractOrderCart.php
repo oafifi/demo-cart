@@ -44,7 +44,7 @@ abstract class AbstractOrderCart implements CartInterface, CheckoutInterface
      *@ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\OrderItem", orphanRemoval=true)
      * @ORM\JoinTable(name="cart_items",
      *      joinColumns={@ORM\JoinColumn(name="cart_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
      *      )
      */
     protected $items;

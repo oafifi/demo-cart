@@ -30,7 +30,7 @@ class AbstractWishOrderItem extends ListOrderItem
      *
      *@ORM\ManyToMany(targetEntity="Demo\CartBundle\Entity\OrderElement\ListOrderItem", orphanRemoval=true)
      * @ORM\JoinTable(name="wish_sub_items",
-     *      joinColumns={@ORM\JoinColumn(name="wish_item_id", referencedColumnName="id")},
+     *      joinColumns={@ORM\JoinColumn(name="wish_item_id", referencedColumnName="id", onDelete="CASCADE")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="sub_item_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
      *      )
      */
